@@ -17,4 +17,8 @@ from telegram import (
     Bot,
     )
 
+from database import Users, user_plans, plans
+
+import datetime
+
 UPLOADING_VIDEO, UPLOADING_LOGO, UPLOADING_SUBTITLE, CURRENT_PLAN = range(4)

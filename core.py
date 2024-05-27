@@ -1,5 +1,10 @@
 from include import *
 
+plans_buttons = []
+
+for plan_instance in plans:
+    plans_buttons.append([InlineKeyboardButton(text=f'{plan_instance.name}', callback_data=f'show{plan_instance.name}')])
+
 class Transcoder():
     async def start(update: Update, context:ContextTypes.DEFAULT_TYPE):
         await context.bot.send_message(chat_id=update.effective_chat.id,text='ello')
@@ -25,8 +30,13 @@ class Transcoder():
 
 class Plan():
     async def start(update: Update, context:ContextTypes.DEFAULT_TYPE):
-        await context.bot.send_message(chat_id=update.effective_chat.id,text='ello')
+        user: Users = user_plans.get_user(userid=str(update.effective_user.id))
+        await context.bot.send_message(chat_id=update.effective_chat.id,text=f'User ID: {update.effective_user.id}\nName: {update.effective_user.full_name}\n\n💠Active Plan: {user.plan.name}\n\nFeatures:\n✓ {'\n✓ '.join(feature for feature in user.plan.features)}', reply_markup=InlineKeyboardMarkup(plans_buttons))
         return CURRENT_PLAN
+    
+    async def cancel():
+        pass
+
     
 video_inputs_handler = ConversationHandler(
     entry_points=[
@@ -53,5 +63,5 @@ plan_menu_handler = ConversationHandler(
     states={
         CURRENT_PLAN: []
     },
-    fallbacks=[CommandHandler('cancel', Transcoder.cancel)],
+    fallbacks=[CommandHandler('cancel', Plan.cancel)],
 )

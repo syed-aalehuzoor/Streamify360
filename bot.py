@@ -1,7 +1,9 @@
 from core import *
+
 app = ApplicationBuilder().token("7189345969:AAH6NnFud_Ey6DfDUsi0w_MReJ-jE0wibuU").build()
 
 async def start(update: Update, context:ContextTypes.DEFAULT_TYPE):
+    user_plans.add_user(userid=str(update.effective_user.id),username=update.effective_user.full_name)
     await context.bot.send_message(chat_id=update.effective_chat.id, text='Welcome to Transcoder')
 
 app.add_handler(plan_menu_handler)
