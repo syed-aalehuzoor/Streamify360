@@ -1,7 +1,23 @@
-from telegram.ext import ContextTypes
-from telegram import Update
+from telegram.ext import (
+    ApplicationBuilder,
+    CommandHandler,
+    ContextTypes,
+    filters,
+    MessageHandler,
+    CallbackQueryHandler,
+    CallbackContext,
+    ConversationHandler,
+    )
+from telegram import (
+    Update,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    ReplyKeyboardMarkup,
+    KeyboardButton,
+    Bot,
+    )
 
-CHOOSING, TYPING_NAME, TYPING_RESOLUTION, UPLOADING_VIDEO, UPLOADING_LOGO, UPLOADING_SUBTITLE = range(6)
+UPLOADING_VIDEO, UPLOADING_LOGO, UPLOADING_SUBTITLE = range(6)
 
 class Transcoder():
     async def transcode(update: Update, context:ContextTypes.DEFAULT_TYPE):

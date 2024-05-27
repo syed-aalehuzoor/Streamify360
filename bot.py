@@ -1,7 +1,4 @@
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, filters, MessageHandler, CallbackQueryHandler, CallbackContext, ConversationHandler
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup,ReplyKeyboardMarkup, KeyboardButton, Bot
-from include import Transcoder, CHOOSING, TYPING_NAME, TYPING_RESOLUTION, UPLOADING_VIDEO, UPLOADING_LOGO, UPLOADING_SUBTITLE
-CHOOSING, TYPING_NAME, TYPING_RESOLUTION, UPLOADING_VIDEO, UPLOADING_LOGO, UPLOADING_SUBTITLE = range(6)
+from include import *
 
 state = None
 app = ApplicationBuilder().token("7189345969:AAH6NnFud_Ey6DfDUsi0w_MReJ-jE0wibuU").build()
