@@ -15,7 +15,7 @@ class ReplyMessage():
         if request == 'plan':
             return [[InlineKeyboardButton(text=plan['name'], callback_data=f'planshow{plan["name"]}')] for plan in plans] + [[InlineKeyboardButton(text='<=Back', callback_data='cancel')]]
         
-        back_button = [InlineKeyboardButton(text='<=Back', callback_data='planback')]
+        back_button = [InlineKeyboardButton(text='<=Back', callback_data='backplan')]
 
         if request == userplan:
             return [back_button]
@@ -169,15 +169,18 @@ class Plan():
     async def start(update: Update, context:ContextTypes.DEFAULT_TYPE):    
         user = user_plans.get_user(userid=str(update.effective_user.id))
         await context.bot.send_message(chat_id=update.effective_chat.id, text=ReplyMessage.get_plan_message(user=user,request= 'plan'), reply_markup=InlineKeyboardMarkup(ReplyMessage.get_plan_buttons(user['plan']['name'], 'plan')))
-        return CURRENT_PLAN
-    
+        return USER_PLAN_SUBSCRIPTION
+
+    async def back_plan(update: Update, context:ContextTypes.DEFAULT_TYPE):
+        user = user_plans.get_user(str(update.effective_user.id))
+        await context.bot.editMessageText(chat_id=update.effective_chat.id, text=ReplyMessage.get_plan_message(user=user,request= 'plan'), message_id=update.callback_query.message.message_id, reply_markup=InlineKeyboardMarkup(ReplyMessage.get_plan_buttons(user['plan']['name'], 'plan')))
+        return USER_PLAN_SUBSCRIPTION
+
     async def show_plan(update: Update, context:ContextTypes.DEFAULT_TYPE):
         user = user_plans.get_user(str(update.effective_user.id))
-        if update.callback_query.data == 'planback':
-            await context.bot.editMessageText(chat_id=update.effective_chat.id, text=ReplyMessage.get_plan_message(user=user,request= 'plan'), message_id=update.callback_query.message.message_id, reply_markup=InlineKeyboardMarkup(ReplyMessage.get_plan_buttons(user['plan']['name'], 'plan')))
-        else:
-            requested_plan = update.callback_query.data[8:]
-            await context.bot.editMessageText(chat_id=update.effective_chat.id, text=ReplyMessage.get_plan_message(user=user,request=requested_plan),message_id=update.callback_query.message.message_id, reply_markup=InlineKeyboardMarkup(ReplyMessage.get_plan_buttons(user['plan']['name'], requested_plan)))
+        requested_plan = update.callback_query.data[8:]
+        await context.bot.editMessageText(chat_id=update.effective_chat.id, text=ReplyMessage.get_plan_message(user=user,request=requested_plan),message_id=update.callback_query.message.message_id, reply_markup=InlineKeyboardMarkup(ReplyMessage.get_plan_buttons(user['plan']['name'], requested_plan)))
+        return SHOWING_PLAN
 
 video_inputs_handler = ConversationHandler(
     entry_points=[
@@ -211,8 +214,12 @@ plan_menu_handler = ConversationHandler(
         CallbackQueryHandler(Plan.start, pattern='^plan$')
         ],
     states={
-        CURRENT_PLAN: [
-            CallbackQueryHandler(Plan.show_plan, pattern='^plan.*$')]
+        USER_PLAN_SUBSCRIPTION: [CallbackQueryHandler(Plan.show_plan, pattern='^plan.*$')],
+        SHOWING_PLAN : [
+            #CallbackQueryHandler(pattern='^subscribe.*$'),
+            CallbackQueryHandler(Plan.back_plan, pattern='^backplan$')
+            ],
+        #INVOICE_SENT : [PreCheckoutQueryHandler()]
     },
     fallbacks=[
         CommandHandler('cancel', bot_map.end_conversation),

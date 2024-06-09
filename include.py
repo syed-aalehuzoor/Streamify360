@@ -7,7 +7,8 @@ from telegram.ext import (
     CallbackQueryHandler,
     CallbackContext,
     ConversationHandler,
-    JobQueue
+    JobQueue,
+    PreCheckoutQueryHandler,
     )
 
 from telegram import (
@@ -30,4 +31,4 @@ import asyncio
 
 from telethon import TelegramClient
 
-UPLOADING_VIDEO, UPLOADING_LOGO, UPLOADING_SUBTITLE, CURRENT_PLAN = range(4)
+UPLOADING_VIDEO, UPLOADING_LOGO, UPLOADING_SUBTITLE, USER_PLAN_SUBSCRIPTION, SHOWING_PLAN, INVOICE_SENT = range(6)
