@@ -7,7 +7,9 @@ from telegram.ext import (
     CallbackQueryHandler,
     CallbackContext,
     ConversationHandler,
+    JobQueue
     )
+
 from telegram import (
     Update,
     InlineKeyboardButton,
@@ -17,8 +19,15 @@ from telegram import (
     Bot,
     )
 
-from database import Users, user_plans, plans
+from database import user_plans, plans, api_hash, api_id, bot_token 
 
 import datetime
+import os
+import subprocess
+import re
+import sys
+import asyncio
+
+from telethon import TelegramClient
 
 UPLOADING_VIDEO, UPLOADING_LOGO, UPLOADING_SUBTITLE, CURRENT_PLAN = range(4)
