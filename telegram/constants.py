@@ -29,7 +29,7 @@ those classes.
     * Most of the constants in this module are grouped into enums.
 """
 # TODO: Remove this when https://github.com/PyCQA/pylint/issues/6887 is resolved.
-# pylint: disable=invalid-enum-extension
+# pylint: disable=invalid-enum-extension,invalid-slots
 
 __all__ = [
     "BOT_API_VERSION",
@@ -37,6 +37,10 @@ __all__ = [
     "SUPPORTED_WEBHOOK_PORTS",
     "ZERO_DATE",
     "AccentColor",
+    "BackgroundFillLimit",
+    "BackgroundFillType",
+    "BackgroundTypeLimit",
+    "BackgroundTypeType",
     "BotCommandLimit",
     "BotCommandScopeType",
     "BotDescriptionLimit",
@@ -142,7 +146,7 @@ class _AccentColor(NamedTuple):
 #: :data:`telegram.__bot_api_version_info__`.
 #:
 #: .. versionadded:: 20.0
-BOT_API_VERSION_INFO: Final[_BotAPIVersion] = _BotAPIVersion(major=7, minor=2)
+BOT_API_VERSION_INFO: Final[_BotAPIVersion] = _BotAPIVersion(major=7, minor=4)
 #: :obj:`str`: Telegram Bot API
 #: version supported by this version of `python-telegram-bot`. Also available as
 #: :data:`telegram.__bot_api_version__`.
@@ -164,7 +168,8 @@ ZERO_DATE: Final[datetime.datetime] = datetime.datetime(1970, 1, 1, tzinfo=UTC)
 
 
 class AccentColor(Enum):
-    """This enum contains the available accent colors for :class:`telegram.Chat.accent_color_id`.
+    """This enum contains the available accent colors for
+    :class:`telegram.ChatFullInfo.accent_color_id`.
     The members of this enum are named tuples with the following attributes:
 
     - ``identifier`` (:obj:`int`): The identifier of the accent color.
@@ -822,6 +827,46 @@ class ChatLimit(IntEnum):
     """
 
 
+class BackgroundTypeLimit(IntEnum):
+    """This enum contains limitations for :class:`telegram.BackgroundTypeFill`,
+    :class:`telegram.BackgroundTypeWallpaper` and :class:`telegram.BackgroundTypePattern`.
+    The enum members of this enumeration are instances of :class:`int` and can be treated as such.
+
+    .. versionadded:: 21.2
+    """
+
+    __slots__ = ()
+
+    MAX_DIMMING = 100
+    """:obj:`int`: Maximum value allowed for:
+
+    * :paramref:`~telegram.BackgroundTypeFill.dark_theme_dimming` parameter of
+        :class:`telegram.BackgroundTypeFill`
+    * :paramref:`~telegram.BackgroundTypeWallpaper.dark_theme_dimming` parameter of
+        :class:`telegram.BackgroundTypeWallpaper`
+    """
+    MAX_INTENSITY = 100
+    """:obj:`int`: Maximum value allowed for :paramref:`~telegram.BackgroundTypePattern.intensity`
+    parameter of :class:`telegram.BackgroundTypePattern`
+    """
+
+
+class BackgroundFillLimit(IntEnum):
+    """This enum contains limitations for :class:`telegram.BackgroundFillGradient`.
+    The enum members of this enumeration are instances of :class:`int` and can be treated as such.
+
+    .. versionadded:: 21.2
+    """
+
+    __slots__ = ()
+
+    MAX_ROTATION_ANGLE = 359
+    """:obj:`int`: Maximum value allowed for:
+        :paramref:`~telegram.BackgroundFillGradient.rotation_angle` parameter of
+        :class:`telegram.BackgroundFillGradient`
+    """
+
+
 class ChatMemberStatus(StringEnum):
     """This enum contains the available states for :class:`telegram.ChatMember`. The enum
     members of this enumeration are instances of :class:`str` and can be treated as such.
@@ -1006,7 +1051,7 @@ class FileSizeLimit(IntEnum):
 
     __slots__ = ()
 
-    FILESIZE_DOWNLOAD = int(10e9)  # (20MB)
+    FILESIZE_DOWNLOAD = int(20e6)  # (20MB)
     """:obj:`int`: Bots can download files of up to 20MB in size."""
     FILESIZE_UPLOAD = int(50e6)  # (50MB)
     """:obj:`int`: Bots can upload non-photo files of up to 50MB in size."""
@@ -1427,6 +1472,21 @@ class LocationLimit(IntEnum):
       :meth:`telegram.Bot.send_location`
     """
 
+    LIVE_PERIOD_FOREVER = int(hex(0x7FFFFFFF), 16)
+    """:obj:`int`: Value for live locations that can be edited indefinitely. Passed in:
+
+    * :paramref:`~telegram.InlineQueryResultLocation.live_period` parameter of
+      :class:`telegram.InlineQueryResultLocation`
+    * :paramref:`~telegram.InputLocationMessageContent.live_period` parameter of
+      :class:`telegram.InputLocationMessageContent`
+    * :paramref:`~telegram.Bot.edit_message_live_location.live_period` parameter of
+      :meth:`telegram.Bot.edit_message_live_location`
+    * :paramref:`~telegram.Bot.send_location.live_period` parameter of
+      :meth:`telegram.Bot.send_location`
+
+    .. versionadded:: 21.2
+    """
+
     MIN_PROXIMITY_ALERT_RADIUS = 1
     """:obj:`int`: Minimum value allowed for:
 
@@ -1570,48 +1630,53 @@ class MessageEntityType(StringEnum):
 
     __slots__ = ()
 
-    MENTION = "mention"
-    """:obj:`str`: Message entities representing a mention."""
-    HASHTAG = "hashtag"
-    """:obj:`str`: Message entities representing a hashtag."""
-    CASHTAG = "cashtag"
-    """:obj:`str`: Message entities representing a cashtag."""
-    PHONE_NUMBER = "phone_number"
-    """:obj:`str`: Message entities representing a phone number."""
-    BOT_COMMAND = "bot_command"
-    """:obj:`str`: Message entities representing a bot command."""
-    URL = "url"
-    """:obj:`str`: Message entities representing a url."""
-    EMAIL = "email"
-    """:obj:`str`: Message entities representing a email."""
+    BLOCKQUOTE = "blockquote"
+    """:obj:`str`: Message entities representing a block quotation.
+
+    .. versionadded:: 20.8
+    """
     BOLD = "bold"
     """:obj:`str`: Message entities representing bold text."""
-    ITALIC = "italic"
-    """:obj:`str`: Message entities representing italic text."""
+    BOT_COMMAND = "bot_command"
+    """:obj:`str`: Message entities representing a bot command."""
+    CASHTAG = "cashtag"
+    """:obj:`str`: Message entities representing a cashtag."""
     CODE = "code"
     """:obj:`str`: Message entities representing monowidth string."""
+    CUSTOM_EMOJI = "custom_emoji"
+    """:obj:`str`: Message entities representing inline custom emoji stickers.
+
+    .. versionadded:: 20.0
+    """
+    EMAIL = "email"
+    """:obj:`str`: Message entities representing a email."""
+    EXPANDABLE_BLOCKQUOTE = "expandable_blockquote"
+    """:obj:`str`: Message entities representing collapsed-by-default block quotation.
+
+    .. versionadded:: 21.3
+    """
+    HASHTAG = "hashtag"
+    """:obj:`str`: Message entities representing a hashtag."""
+    ITALIC = "italic"
+    """:obj:`str`: Message entities representing italic text."""
+    MENTION = "mention"
+    """:obj:`str`: Message entities representing a mention."""
+    PHONE_NUMBER = "phone_number"
+    """:obj:`str`: Message entities representing a phone number."""
     PRE = "pre"
     """:obj:`str`: Message entities representing monowidth block."""
+    SPOILER = "spoiler"
+    """:obj:`str`: Message entities representing spoiler text."""
+    STRIKETHROUGH = "strikethrough"
+    """:obj:`str`: Message entities representing strikethrough text."""
     TEXT_LINK = "text_link"
     """:obj:`str`: Message entities representing clickable text URLs."""
     TEXT_MENTION = "text_mention"
     """:obj:`str`: Message entities representing text mention for users without usernames."""
     UNDERLINE = "underline"
     """:obj:`str`: Message entities representing underline text."""
-    STRIKETHROUGH = "strikethrough"
-    """:obj:`str`: Message entities representing strikethrough text."""
-    SPOILER = "spoiler"
-    """:obj:`str`: Message entities representing spoiler text."""
-    CUSTOM_EMOJI = "custom_emoji"
-    """:obj:`str`: Message entities representing inline custom emoji stickers.
-
-    .. versionadded:: 20.0
-    """
-    BLOCKQUOTE = "blockquote"
-    """:obj:`str`: Message entities representing a block quotation.
-
-    .. versionadded:: 20.8
-    """
+    URL = "url"
+    """:obj:`str`: Message entities representing a url."""
 
 
 class MessageLimit(IntEnum):
@@ -1726,6 +1791,11 @@ class MessageType(StringEnum):
 
     .. versionadded:: 20.8
     """
+    CHAT_BACKGROUND_SET = "chat_background_set"
+    """:obj:`str`: Messages with :attr:`telegram.Message.chat_background_set`.
+
+    .. versionadded:: 21.2
+    """
     CONNECTED_WEBSITE = "connected_website"
     """:obj:`str`: Messages with :attr:`telegram.Message.connected_website`."""
     CONTACT = "contact"
@@ -1736,6 +1806,10 @@ class MessageType(StringEnum):
     """:obj:`str`: Messages with :attr:`telegram.Message.dice`."""
     DOCUMENT = "document"
     """:obj:`str`: Messages with :attr:`telegram.Message.document`."""
+    EFFECT_ID = "effect_id"
+    """:obj:`str`: Messages with :attr:`telegram.Message.effect_id`.
+
+    .. versionadded:: 21.3"""
     FORUM_TOPIC_CREATED = "forum_topic_created"
     """:obj:`str`: Messages with :attr:`telegram.Message.forum_topic_created`.
 
@@ -1895,7 +1969,7 @@ class PollingLimit(IntEnum):
 
 class ProfileAccentColor(Enum):
     """This enum contains the available accent colors for
-    :class:`telegram.Chat.profile_accent_color_id`.
+    :class:`telegram.ChatFullInfo.profile_accent_color_id`.
     The members of this enum are named tuples with the following attributes:
 
     - ``identifier`` (:obj:`int`): The identifier of the accent color.
@@ -2878,3 +2952,39 @@ class ReactionEmoji(StringEnum):
     """:obj:`str`: Woman Shrugging"""
     POUTING_FACE = "😡"
     """:obj:`str`: Pouting face"""
+
+
+class BackgroundTypeType(StringEnum):
+    """This enum contains the available types of :class:`telegram.BackgroundType`. The enum
+    members of this enumeration are instances of :class:`str` and can be treated as such.
+
+    .. versionadded:: 21.2
+    """
+
+    __slots__ = ()
+
+    FILL = "fill"
+    """:obj:`str`: A :class:`telegram.BackgroundType` with fill background."""
+    WALLPAPER = "wallpaper"
+    """:obj:`str`: A :class:`telegram.BackgroundType` with wallpaper background."""
+    PATTERN = "pattern"
+    """:obj:`str`: A :class:`telegram.BackgroundType` with pattern background."""
+    CHAT_THEME = "chat_theme"
+    """:obj:`str`: A :class:`telegram.BackgroundType` with chat_theme background."""
+
+
+class BackgroundFillType(StringEnum):
+    """This enum contains the available types of :class:`telegram.BackgroundFill`. The enum
+    members of this enumeration are instances of :class:`str` and can be treated as such.
+
+    .. versionadded:: 21.2
+    """
+
+    __slots__ = ()
+
+    SOLID = "solid"
+    """:obj:`str`: A :class:`telegram.BackgroundFill` with solid fill."""
+    GRADIENT = "gradient"
+    """:obj:`str`: A :class:`telegram.BackgroundFill` with gradient fill."""
+    FREEFORM_GRADIENT = "freeform_gradient"
+    """:obj:`str`: A :class:`telegram.BackgroundFill` with freeform_gradient fill."""

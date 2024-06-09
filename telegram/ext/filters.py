@@ -46,6 +46,7 @@ __all__ = (
     "CHAT",
     "COMMAND",
     "CONTACT",
+    "EFFECT_ID",
     "FORWARDED",
     "GAME",
     "GIVEAWAY",
@@ -289,7 +290,7 @@ class BaseFilter:
             :attr:`telegram.Update.edited_business_message`, or :obj:`False` otherwise.
         """
         return bool(  # Only message updates should be handled.
-            update.channel_post  # pylint: disable=too-many-boolean-expressions
+            update.channel_post
             or update.message
             or update.edited_channel_post
             or update.edited_message
@@ -401,7 +402,7 @@ class _InvertedFilter(UpdateFilter):
         return f"<inverted {self.inv_filter}>"
 
     @name.setter
-    def name(self, name: str) -> NoReturn:
+    def name(self, _: str) -> NoReturn:
         raise RuntimeError("Cannot set name for combined filters.")
 
 
@@ -492,7 +493,7 @@ class _MergedFilter(UpdateFilter):
         )
 
     @name.setter
-    def name(self, name: str) -> NoReturn:
+    def name(self, _: str) -> NoReturn:
         raise RuntimeError("Cannot set name for combined filters.")
 
 
@@ -522,14 +523,14 @@ class _XORFilter(UpdateFilter):
         return f"<{self.base_filter} xor {self.xor_filter}>"
 
     @name.setter
-    def name(self, name: str) -> NoReturn:
+    def name(self, _: str) -> NoReturn:
         raise RuntimeError("Cannot set name for combined filters.")
 
 
 class _All(MessageFilter):
     __slots__ = ()
 
-    def filter(self, message: Message) -> bool:
+    def filter(self, message: Message) -> bool:  # noqa: ARG002
         return True
 
 
@@ -809,7 +810,7 @@ class _ChatUserBaseFilter(MessageFilter, ABC):
         )
 
     @name.setter
-    def name(self, name: str) -> NoReturn:
+    def name(self, _: str) -> NoReturn:
         raise RuntimeError(f"Cannot set name for filters.{self.__class__.__name__}")
 
 
@@ -1336,6 +1337,19 @@ class Document:
     """Use as ``filters.Document.XML``."""
     ZIP = MimeType(mimetypes.types_map[".zip"])
     """Use as ``filters.Document.ZIP``."""
+
+
+class _EffectId(MessageFilter):
+    __slots__ = ()
+
+    def filter(self, message: Message) -> bool:
+        return bool(message.effect_id)
+
+
+EFFECT_ID = _EffectId(name="filters.EFFECT_ID")
+"""Messages that contain :attr:`telegram.Message.effect_id`.
+
+.. versionadded:: 21.3"""
 
 
 class Entity(MessageFilter):
@@ -1909,7 +1923,8 @@ class StatusUpdate:
         def filter(self, update: Update) -> bool:
             return bool(
                 # keep this alphabetically sorted for easier maintenance
-                StatusUpdate.CHAT_CREATED.check_update(update)
+                StatusUpdate.CHAT_BACKGROUND_SET.check_update(update)
+                or StatusUpdate.CHAT_CREATED.check_update(update)
                 or StatusUpdate.CHAT_SHARED.check_update(update)
                 or StatusUpdate.CONNECTED_WEBSITE.check_update(update)
                 or StatusUpdate.DELETE_CHAT_PHOTO.check_update(update)
@@ -1941,6 +1956,15 @@ class StatusUpdate:
 
     ALL = _All(name="filters.StatusUpdate.ALL")
     """Messages that contain any of the below."""
+
+    class _ChatBackgroundSet(MessageFilter):
+        __slots__ = ()
+
+        def filter(self, message: Message) -> bool:
+            return bool(message.chat_background_set)
+
+    CHAT_BACKGROUND_SET = _ChatBackgroundSet(name="filters.StatusUpdate.CHAT_BACKGROUND_SET")
+    """Messages that contain :attr:`telegram.Message.chat_background_set`."""
 
     class _ChatCreated(MessageFilter):
         __slots__ = ()

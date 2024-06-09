@@ -58,9 +58,9 @@ from telegram._botcommandscope import BotCommandScope
 from telegram._botdescription import BotDescription, BotShortDescription
 from telegram._botname import BotName
 from telegram._business import BusinessConnection
-from telegram._chat import Chat
 from telegram._chatadministratorrights import ChatAdministratorRights
 from telegram._chatboost import UserChatBoosts
+from telegram._chatfullinfo import ChatFullInfo
 from telegram._chatinvitelink import ChatInviteLink
 from telegram._chatmember import ChatMember
 from telegram._chatpermissions import ChatPermissions
@@ -84,7 +84,7 @@ from telegram._inline.inlinequeryresultsbutton import InlineQueryResultsButton
 from telegram._menubutton import MenuButton
 from telegram._message import Message
 from telegram._messageid import MessageId
-from telegram._poll import Poll
+from telegram._poll import InputPollOption, Poll
 from telegram._reaction import ReactionType, ReactionTypeCustomEmoji, ReactionTypeEmoji
 from telegram._reply import ReplyParameters
 from telegram._sentwebappmessage import SentWebAppMessage
@@ -524,7 +524,10 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
 
     @classmethod
     def _warn(
-        cls, message: str, category: Type[Warning] = PTBUserWarning, stacklevel: int = 0
+        cls,
+        message: Union[str, PTBUserWarning],
+        category: Type[Warning] = PTBUserWarning,
+        stacklevel: int = 0,
     ) -> None:
         """Convenience method to issue a warning. This method is here mostly to make it easier
         for ExtBot to add 1 level to all warning calls.
@@ -669,6 +672,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         link_preview_options: ODVInput["LinkPreviewOptions"] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -708,7 +712,9 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         data["disable_notification"] = disable_notification
         data["protect_content"] = protect_content
         data["parse_mode"] = parse_mode
-        data["reply_parameters"] = reply_parameters
+
+        if reply_parameters is not None:
+            data["reply_parameters"] = reply_parameters
 
         if link_preview_options is not None:
             data["link_preview_options"] = link_preview_options
@@ -727,6 +733,9 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
 
         if business_connection_id is not None:
             data["business_connection_id"] = business_connection_id
+
+        if message_effect_id is not None:
+            data["message_effect_id"] = message_effect_id
 
         result = await self._post(
             endpoint,
@@ -837,7 +846,6 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
                     f"Please use 'Bot.{endpoint}' instead of "
                     f"'Bot.do_api_request(\"{endpoint}\", ...)'"
                 ),
-                PTBDeprecationWarning,
                 stacklevel=2,
             )
 
@@ -917,6 +925,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         link_preview_options: ODVInput["LinkPreviewOptions"] = DEFAULT_NONE,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -965,6 +974,9 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             business_connection_id (:obj:`str`, optional): |business_id_str|
 
                 .. versionadded:: 21.1
+            message_effect_id (:obj:`str`, optional): |message_effect_id|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -1022,6 +1034,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             parse_mode=parse_mode,
             link_preview_options=link_preview_options,
             reply_parameters=reply_parameters,
+            message_effect_id=message_effect_id,
             read_timeout=read_timeout,
             write_timeout=write_timeout,
             connect_timeout=connect_timeout,
@@ -1150,7 +1163,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         Note:
             Since the release of Bot API 5.5 it can be impossible to forward messages from
             some chats. Use the attributes :attr:`telegram.Message.has_protected_content` and
-            :attr:`telegram.Chat.has_protected_content` to check this.
+            :attr:`telegram.ChatFullInfo.has_protected_content` to check this.
 
             As a workaround, it is still possible to use :meth:`copy_message`. However, this
             behaviour is undocumented and might be changed by Telegram.
@@ -1270,6 +1283,8 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         has_spoiler: Optional[bool] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
+        show_caption_above_media: Optional[bool] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -1333,6 +1348,12 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             business_connection_id (:obj:`str`, optional): |business_id_str|
 
                 .. versionadded:: 21.1
+            message_effect_id (:obj:`str`, optional): |message_effect_id|
+
+                .. versionadded:: 21.3
+            show_caption_above_media (:obj:`bool`, optional): Pass |show_cap_above_med|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -1370,6 +1391,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             "chat_id": chat_id,
             "photo": self._parse_file_input(photo, PhotoSize, filename=filename),
             "has_spoiler": has_spoiler,
+            "show_caption_above_media": show_caption_above_media,
         }
 
         return await self._send_message(
@@ -1391,6 +1413,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             pool_timeout=pool_timeout,
             api_kwargs=api_kwargs,
             business_connection_id=business_connection_id,
+            message_effect_id=message_effect_id,
         )
 
     async def send_audio(
@@ -1410,6 +1433,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         thumbnail: Optional[FileInput] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -1482,6 +1506,9 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             business_connection_id (:obj:`str`, optional): |business_id_str|
 
                 .. versionadded:: 21.1
+            message_effect_id (:obj:`str`, optional): |message_effect_id|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -1543,6 +1570,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             pool_timeout=pool_timeout,
             api_kwargs=api_kwargs,
             business_connection_id=business_connection_id,
+            message_effect_id=message_effect_id,
         )
 
     async def send_document(
@@ -1560,6 +1588,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         thumbnail: Optional[FileInput] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -1631,6 +1660,9 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             business_connection_id (:obj:`str`, optional): |business_id_str|
 
                 .. versionadded:: 21.1
+            message_effect_id (:obj:`str`, optional): |message_effect_id|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -1688,6 +1720,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             pool_timeout=pool_timeout,
             api_kwargs=api_kwargs,
             business_connection_id=business_connection_id,
+            message_effect_id=message_effect_id,
         )
 
     async def send_sticker(
@@ -1701,6 +1734,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         emoji: Optional[str] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -1752,6 +1786,9 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             business_connection_id (:obj:`str`, optional): |business_id_str|
 
                 .. versionadded:: 21.1
+            message_effect_id (:obj:`str`, optional): |message_effect_id|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -1801,6 +1838,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             pool_timeout=pool_timeout,
             api_kwargs=api_kwargs,
             business_connection_id=business_connection_id,
+            message_effect_id=message_effect_id,
         )
 
     async def send_video(
@@ -1822,6 +1860,8 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         thumbnail: Optional[FileInput] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
+        show_caption_above_media: Optional[bool] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -1902,6 +1942,12 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             business_connection_id (:obj:`str`, optional): |business_id_str|
 
                 .. versionadded:: 21.1
+            message_effect_id (:obj:`str`, optional): |message_effect_id|
+
+                .. versionadded:: 21.3
+            show_caption_above_media (:obj:`bool`, optional): Pass |show_cap_above_med|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -1944,6 +1990,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             "supports_streaming": supports_streaming,
             "thumbnail": self._parse_file_input(thumbnail, attach=True) if thumbnail else None,
             "has_spoiler": has_spoiler,
+            "show_caption_above_media": show_caption_above_media,
         }
 
         return await self._send_message(
@@ -1965,6 +2012,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             pool_timeout=pool_timeout,
             api_kwargs=api_kwargs,
             business_connection_id=business_connection_id,
+            message_effect_id=message_effect_id,
         )
 
     async def send_video_note(
@@ -1980,6 +2028,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         thumbnail: Optional[FileInput] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -2045,6 +2094,9 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             business_connection_id (:obj:`str`, optional): |business_id_str|
 
                 .. versionadded:: 21.1
+            message_effect_id (:obj:`str`, optional): |message_effect_id|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -2102,6 +2154,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             pool_timeout=pool_timeout,
             api_kwargs=api_kwargs,
             business_connection_id=business_connection_id,
+            message_effect_id=message_effect_id,
         )
 
     async def send_animation(
@@ -2122,6 +2175,8 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         thumbnail: Optional[FileInput] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
+        show_caption_above_media: Optional[bool] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -2196,6 +2251,12 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             business_connection_id (:obj:`str`, optional): |business_id_str|
 
                 .. versionadded:: 21.1
+            message_effect_id (:obj:`str`, optional): |message_effect_id|
+
+                .. versionadded:: 21.3
+            show_caption_above_media (:obj:`bool`, optional): Pass |show_cap_above_med|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -2237,6 +2298,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             "height": height,
             "thumbnail": self._parse_file_input(thumbnail, attach=True) if thumbnail else None,
             "has_spoiler": has_spoiler,
+            "show_caption_above_media": show_caption_above_media,
         }
 
         return await self._send_message(
@@ -2258,6 +2320,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             pool_timeout=pool_timeout,
             api_kwargs=api_kwargs,
             business_connection_id=business_connection_id,
+            message_effect_id=message_effect_id,
         )
 
     async def send_voice(
@@ -2274,6 +2337,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -2287,9 +2351,10 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         """
         Use this method to send audio files, if you want Telegram clients to display the file
         as a playable voice message. For this to work, your audio must be in an ``.ogg`` file
-        encoded with OPUS (other formats may be sent as Audio or Document). Bots can currently
-        send voice messages of up to :tg-const:`telegram.constants.FileSizeLimit.FILESIZE_UPLOAD`
-        in size, this limit may be changed in the future.
+        encoded with OPUS , or in .MP3 format, or in .M4A format (other formats may be sent as
+        :class:`~telegram.Audio` or :class:`~telegram.Document`). Bots can currently send voice
+        messages of up to :tg-const:`telegram.constants.FileSizeLimit.FILESIZE_UPLOAD` in size,
+        this limit may be changed in the future.
 
         Note:
             To use this method, the file must have the type :mimetype:`audio/ogg` and be no more
@@ -2341,6 +2406,9 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             business_connection_id (:obj:`str`, optional): |business_id_str|
 
                 .. versionadded:: 21.1
+            message_effect_id (:obj:`str`, optional): |message_effect_id|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -2399,6 +2467,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             pool_timeout=pool_timeout,
             api_kwargs=api_kwargs,
             business_connection_id=business_connection_id,
+            message_effect_id=message_effect_id,
         )
 
     async def send_media_group(
@@ -2412,6 +2481,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -2462,6 +2532,9 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             business_connection_id (:obj:`str`, optional): |business_id_str|
 
                 .. versionadded:: 21.1
+            message_effect_id (:obj:`str`, optional): |message_effect_id|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -2555,6 +2628,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             "message_thread_id": message_thread_id,
             "reply_parameters": reply_parameters,
             "business_connection_id": business_connection_id,
+            "message_effect_id": message_effect_id,
         }
 
         result = await self._post(
@@ -2584,6 +2658,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -2610,7 +2685,9 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             live_period (:obj:`int`, optional): Period in seconds for which the location will be
                 updated, should be between
                 :tg-const:`telegram.constants.LocationLimit.MIN_LIVE_PERIOD` and
-                :tg-const:`telegram.constants.LocationLimit.MAX_LIVE_PERIOD`.
+                :tg-const:`telegram.constants.LocationLimit.MAX_LIVE_PERIOD`, or
+                :tg-const:`telegram.constants.LocationLimit.LIVE_PERIOD_FOREVER` for live
+                locations that can be edited indefinitely.
             heading (:obj:`int`, optional): For live locations, a direction in which the user is
                 moving, in degrees. Must be between
                 :tg-const:`telegram.constants.LocationLimit.MIN_HEADING` and
@@ -2638,6 +2715,9 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             business_connection_id (:obj:`str`, optional): |business_id_str|
 
                 .. versionadded:: 21.1
+            message_effect_id (:obj:`str`, optional): |message_effect_id|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -2707,6 +2787,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             pool_timeout=pool_timeout,
             api_kwargs=api_kwargs,
             business_connection_id=business_connection_id,
+            message_effect_id=message_effect_id,
         )
 
     async def edit_message_live_location(
@@ -2720,6 +2801,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         horizontal_accuracy: Optional[float] = None,
         heading: Optional[int] = None,
         proximity_alert_radius: Optional[int] = None,
+        live_period: Optional[int] = None,
         *,
         location: Optional[Location] = None,
         read_timeout: ODVInput[float] = DEFAULT_NONE,
@@ -2758,6 +2840,15 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
                 if specified.
             reply_markup (:class:`telegram.InlineKeyboardMarkup`, optional): An object for a new
                 inline keyboard.
+            live_period (:obj:`int`, optional): New period in seconds during which the location
+                can be updated, starting from the message send date. If
+                :tg-const:`telegram.constants.LocationLimit.LIVE_PERIOD_FOREVER` is specified,
+                then the location can be updated forever. Otherwise, the new value must not exceed
+                the current ``live_period`` by more than a day, and the live location expiration
+                date must remain within the next 90 days. If not specified, then ``live_period``
+                remains unchanged
+
+                .. versionadded:: 21.2.
 
         Keyword Args:
             location (:class:`telegram.Location`, optional): The location to send.
@@ -2790,6 +2881,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             "horizontal_accuracy": horizontal_accuracy,
             "heading": heading,
             "proximity_alert_radius": proximity_alert_radius,
+            "live_period": live_period,
         }
 
         return await self._send_message(
@@ -2867,6 +2959,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -2919,6 +3012,9 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             business_connection_id (:obj:`str`, optional): |business_id_str|
 
                 .. versionadded:: 21.1
+            message_effect_id (:obj:`str`, optional): |message_effect_id|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -2999,6 +3095,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             pool_timeout=pool_timeout,
             api_kwargs=api_kwargs,
             business_connection_id=business_connection_id,
+            message_effect_id=message_effect_id,
         )
 
     async def send_contact(
@@ -3014,6 +3111,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -3056,6 +3154,9 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             business_connection_id (:obj:`str`, optional): |business_id_str|
 
                 .. versionadded:: 21.1
+            message_effect_id (:obj:`str`, optional): |message_effect_id|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -3127,6 +3228,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             pool_timeout=pool_timeout,
             api_kwargs=api_kwargs,
             business_connection_id=business_connection_id,
+            message_effect_id=message_effect_id,
         )
 
     async def send_game(
@@ -3139,6 +3241,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -3171,6 +3274,9 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             business_connection_id (:obj:`str`, optional): |business_id_str|
 
                 .. versionadded:: 21.1
+            message_effect_id (:obj:`str`, optional): |message_effect_id|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -3217,6 +3323,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             pool_timeout=pool_timeout,
             api_kwargs=api_kwargs,
             business_connection_id=business_connection_id,
+            message_effect_id=message_effect_id,
         )
 
     async def send_chat_action(
@@ -3572,7 +3679,6 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             result["file_path"] = f"{self._base_file_url}/{file_path}"
 
         return File.de_json(result, self)  # type: ignore[return-value]
-
 
     async def ban_chat_member(
         self,
@@ -3939,6 +4045,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         reply_markup: Optional["InlineKeyboardMarkup"] = None,
         parse_mode: ODVInput[str] = DEFAULT_NONE,
         caption_entities: Optional[Sequence["MessageEntity"]] = None,
+        show_caption_above_media: Optional[bool] = None,
         *,
         read_timeout: ODVInput[float] = DEFAULT_NONE,
         write_timeout: ODVInput[float] = DEFAULT_NONE,
@@ -3970,6 +4077,9 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
                     |sequenceargs|
             reply_markup (:class:`telegram.InlineKeyboardMarkup`, optional): An object for an
                 inline keyboard.
+            show_caption_above_media (:obj:`bool`, optional): Pass |show_cap_above_med|
+
+                .. versionadded:: 21.3
 
         Returns:
             :class:`telegram.Message`: On success, if edited message is not an inline message, the
@@ -3983,6 +4093,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             "chat_id": chat_id,
             "message_id": message_id,
             "inline_message_id": inline_message_id,
+            "show_caption_above_media": show_caption_above_media,
         }
 
         return await self._send_message(
@@ -4196,10 +4307,12 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             except NotImplementedError:
                 arg_read_timeout = 2
                 self._warn(
-                    f"The class {self._request[0].__class__.__name__} does not override "
-                    "the property `read_timeout`. Overriding this property will be mandatory in "
-                    "future versions. Using 2 seconds as fallback.",
-                    PTBDeprecationWarning,
+                    PTBDeprecationWarning(
+                        "20.7",
+                        f"The class {self._request[0].__class__.__name__} does not override "
+                        "the property `read_timeout`. Overriding this property will be mandatory "
+                        "in future versions. Using 2 seconds as fallback.",
+                    ),
                     stacklevel=2,
                 )
 
@@ -4435,16 +4548,19 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         connect_timeout: ODVInput[float] = DEFAULT_NONE,
         pool_timeout: ODVInput[float] = DEFAULT_NONE,
         api_kwargs: Optional[JSONDict] = None,
-    ) -> Chat:
+    ) -> ChatFullInfo:
         """
         Use this method to get up to date information about the chat (current name of the user for
         one-on-one conversations, current username of a user, group or channel, etc.).
+
+        .. versionchanged:: 21.2
+            In accordance to Bot API 7.3, this method now returns a :class:`telegram.ChatFullInfo`.
 
         Args:
             chat_id (:obj:`int` | :obj:`str`): |chat_id_channel|
 
         Returns:
-            :class:`telegram.Chat`
+            :class:`telegram.ChatFullInfo`
 
         Raises:
             :class:`telegram.error.TelegramError`
@@ -4462,7 +4578,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             api_kwargs=api_kwargs,
         )
 
-        return Chat.de_json(result, self)  # type: ignore[return-value]
+        return ChatFullInfo.de_json(result, self)  # type: ignore[return-value]
 
     async def get_chat_administrators(
         self,
@@ -4590,8 +4706,8 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
     ) -> bool:
         """Use this method to set a new group sticker set for a supergroup.
         The bot must be an administrator in the chat for this to work and must have the appropriate
-        admin rights. Use the field :attr:`telegram.Chat.can_set_sticker_set` optionally returned
-        in :meth:`get_chat` requests to check if the bot can use this method.
+        admin rights. Use the field :attr:`telegram.ChatFullInfo.can_set_sticker_set` optionally
+        returned in :meth:`get_chat` requests to check if the bot can use this method.
 
         Args:
             chat_id (:obj:`int` | :obj:`str`): |chat_id_group|
@@ -4624,7 +4740,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
     ) -> bool:
         """Use this method to delete a group sticker set from a supergroup. The bot must be an
         administrator in the chat for this to work and must have the appropriate admin rights.
-        Use the field :attr:`telegram.Chat.can_set_sticker_set` optionally returned in
+        Use the field :attr:`telegram.ChatFullInfo.can_set_sticker_set` optionally returned in
         :meth:`get_chat` requests to check if the bot can use this method.
 
         Args:
@@ -4802,7 +4918,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         title: str,
         description: str,
         payload: str,
-        provider_token: str,
+        provider_token: Optional[str],  # This arg is now optional as of Bot API 7.4
         currency: str,
         prices: Sequence["LabeledPrice"],
         start_parameter: Optional[str] = None,
@@ -4825,6 +4941,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
         protect_content: ODVInput[bool] = DEFAULT_NONE,
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
+        message_effect_id: Optional[str] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -4856,12 +4973,19 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
                 :tg-const:`telegram.Invoice.MAX_PAYLOAD_LENGTH` bytes. This will not be
                 displayed to the user, use for your internal processes.
             provider_token (:obj:`str`): Payments provider token, obtained via
-                `@BotFather <https://t.me/BotFather>`_.
+                `@BotFather <https://t.me/BotFather>`_. Pass an empty string for payments in
+                |tg_stars|.
+
+                .. deprecated:: 21.3
+                    As of Bot API 7.4, this parameter is now optional and future versions of the
+                    library will make it optional as well.
+
             currency (:obj:`str`): Three-letter ISO 4217 currency code, see `more on currencies
-                <https://core.telegram.org/bots/payments#supported-currencies>`_.
+                <https://core.telegram.org/bots/payments#supported-currencies>`_. Pass ``XTR`` for
+                payment in |tg_stars|.
             prices (Sequence[:class:`telegram.LabeledPrice`]): Price breakdown, a sequence
                 of components (e.g. product price, tax, discount, delivery cost, delivery tax,
-                bonus, etc.).
+                bonus, etc.). Must contain exactly one item for payment in |tg_stars|.
 
                 .. versionchanged:: 20.0
                     |sequenceargs|
@@ -4870,7 +4994,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
                 a maximum tip of US$ 1.45 pass ``max_tip_amount = 145``. See the exp parameter in
                 `currencies.json <https://core.telegram.org/bots/payments/currencies.json>`_, it
                 shows the number of digits past the decimal point for each currency (2 for the
-                majority of currencies). Defaults to ``0``.
+                majority of currencies). Defaults to ``0``. Not supported for payment in |tg_stars|
 
                 .. versionadded:: 13.5
             suggested_tip_amounts (Sequence[:obj:`int`], optional): An array of
@@ -4903,19 +5027,20 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             photo_width (:obj:`int`, optional): Photo width.
             photo_height (:obj:`int`, optional): Photo height.
             need_name (:obj:`bool`, optional): Pass :obj:`True`, if you require the user's full
-                name to complete the order.
+                name to complete the order. Ignored for payments in |tg_stars|.
             need_phone_number (:obj:`bool`, optional): Pass :obj:`True`, if you require the user's
-                phone number to complete the order.
+                phone number to complete the order. Ignored for payments in |tg_stars|.
             need_email (:obj:`bool`, optional): Pass :obj:`True`, if you require the user's email
-                to complete the order.
+                to complete the order. Ignored for payments in |tg_stars|.
             need_shipping_address (:obj:`bool`, optional): Pass :obj:`True`, if you require the
-                user's shipping address to complete the order.
+                user's shipping address to complete the order. Ignored for payments in
+                |tg_stars|.
             send_phone_number_to_provider (:obj:`bool`, optional): Pass :obj:`True`, if user's
-                phone number should be sent to provider.
+                phone number should be sent to provider. Ignored for payments in |tg_stars|.
             send_email_to_provider (:obj:`bool`, optional): Pass :obj:`True`, if user's email
-                address should be sent to provider.
+                address should be sent to provider. Ignored for payments in |tg_stars|.
             is_flexible (:obj:`bool`, optional): Pass :obj:`True`, if the final price depends on
-                the shipping method.
+                the shipping method. Ignored for payments in |tg_stars|.
             disable_notification (:obj:`bool`, optional): |disable_notification|
             protect_content (:obj:`bool`, optional): |protect_content|
 
@@ -4930,6 +5055,9 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             reply_parameters (:class:`telegram.ReplyParameters`, optional): |reply_parameters|
 
                 .. versionadded:: 20.8
+            message_effect_id (:obj:`str`, optional): |message_effect_id|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -4998,6 +5126,7 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
             connect_timeout=connect_timeout,
             pool_timeout=pool_timeout,
             api_kwargs=api_kwargs,
+            message_effect_id=message_effect_id,
         )
 
     async def answer_shipping_query(
@@ -5312,7 +5441,8 @@ class Bot(TelegramObject, AsyncContextManager["Bot"]):
 
                 .. versionadded:: 20.6
             can_edit_stories (:obj:`bool`, optional): Pass :obj:`True`, if the administrator can
-                edit stories posted by other users.
+                edit stories posted by other users, post stories to the chat page, pin chat
+                stories, and access the chat's story archive
 
                 .. versionadded:: 20.6
             can_delete_stories (:obj:`bool`, optional): Pass :obj:`True`, if the administrator can
@@ -6313,7 +6443,6 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
         name: str,
         title: str,
         stickers: Sequence["InputSticker"],
-        sticker_format: Optional[str] = None,
         sticker_type: Optional[str] = None,
         needs_repainting: Optional[bool] = None,
         *,
@@ -6340,6 +6469,9 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
             Removed the deprecated parameters mentioned above and adjusted the order of the
             parameters.
 
+        .. versionremoved:: 21.2
+           Removed the deprecated parameter ``sticker_format``.
+
         Args:
             user_id (:obj:`int`): User identifier of created sticker set owner.
             name (:obj:`str`): Short name of sticker set, to be used in t.me/addstickers/ URLs
@@ -6358,16 +6490,6 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
                 stickers to be added to the sticker set.
 
                 .. versionadded:: 20.2
-
-            sticker_format (:obj:`str`): Format of stickers in the set, must be one of
-                :attr:`~telegram.constants.StickerFormat.STATIC`,
-                :attr:`~telegram.constants.StickerFormat.ANIMATED` or
-                :attr:`~telegram.constants.StickerFormat.VIDEO`.
-
-                .. versionadded:: 20.2
-
-                .. deprecated:: 21.1
-                    Use :paramref:`telegram.InputSticker.format` instead.
 
             sticker_type (:obj:`str`, optional): Type of stickers in the set, pass
                 :attr:`telegram.Sticker.REGULAR` or :attr:`telegram.Sticker.MASK`, or
@@ -6388,20 +6510,11 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
         Raises:
             :class:`telegram.error.TelegramError`
         """
-        if sticker_format is not None:
-            warn(
-                "The parameter `sticker_format` is deprecated. Use the parameter"
-                " `InputSticker.format` in the parameter `stickers` instead.",
-                stacklevel=2,
-                category=PTBDeprecationWarning,
-            )
-
         data: JSONDict = {
             "user_id": user_id,
             "name": name,
             "title": title,
             "stickers": stickers,
-            "sticker_format": sticker_format,
             "sticker_type": sticker_type,
             "needs_repainting": needs_repainting,
         }
@@ -6816,7 +6929,7 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
         self,
         chat_id: Union[int, str],
         question: str,
-        options: Sequence[str],
+        options: Sequence[Union[str, "InputPollOption"]],
         is_anonymous: Optional[bool] = None,
         type: Optional[str] = None,  # pylint: disable=redefined-builtin
         allows_multiple_answers: Optional[bool] = None,
@@ -6833,6 +6946,9 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        question_parse_mode: ODVInput[str] = DEFAULT_NONE,
+        question_entities: Optional[Sequence["MessageEntity"]] = None,
+        message_effect_id: Optional[str] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -6849,14 +6965,20 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
             chat_id (:obj:`int` | :obj:`str`): |chat_id_channel|
             question (:obj:`str`): Poll question, :tg-const:`telegram.Poll.MIN_QUESTION_LENGTH`-
                 :tg-const:`telegram.Poll.MAX_QUESTION_LENGTH` characters.
-            options (Sequence[:obj:`str`]): Sequence of answer options,
+            options (Sequence[:obj:`str` | :class:`telegram.InputPollOption`]): Sequence of
                 :tg-const:`telegram.Poll.MIN_OPTION_NUMBER`-
-                :tg-const:`telegram.Poll.MAX_OPTION_NUMBER` strings
+                :tg-const:`telegram.Poll.MAX_OPTION_NUMBER` answer options. Each option may either
+                be a string with
                 :tg-const:`telegram.Poll.MIN_OPTION_LENGTH`-
-                :tg-const:`telegram.Poll.MAX_OPTION_LENGTH` characters each.
+                :tg-const:`telegram.Poll.MAX_OPTION_LENGTH` characters or an
+                :class:`~telegram.InputPollOption` object. Strings are converted to
+                :class:`~telegram.InputPollOption` objects automatically.
 
                 .. versionchanged:: 20.0
                     |sequenceargs|
+
+                .. versionchanged:: 21.2
+                   Bot API 7.3 adds support for :class:`~telegram.InputPollOption` objects.
             is_anonymous (:obj:`bool`, optional): :obj:`True`, if the poll needs to be anonymous,
                 defaults to :obj:`True`.
             type (:obj:`str`, optional): Poll type, :tg-const:`telegram.Poll.QUIZ` or
@@ -6911,6 +7033,19 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
             business_connection_id (:obj:`str`, optional): |business_id_str|
 
                 .. versionadded:: 21.1
+            question_parse_mode (:obj:`str`, optional): Mode for parsing entities in the question.
+                See the constants in :class:`telegram.constants.ParseMode` for the available modes.
+                Currently, only custom emoji entities are allowed.
+
+                .. versionadded:: 21.2
+            question_entities (Sequence[:class:`telegram.Message`], optional): Special entities
+                that appear in the poll :paramref:`question`. It can be specified instead of
+                :paramref:`question_parse_mode`.
+
+                .. versionadded:: 21.2
+            message_effect_id (:obj:`str`, optional): |message_effect_id|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -6942,7 +7077,10 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
         data: JSONDict = {
             "chat_id": chat_id,
             "question": question,
-            "options": options,
+            "options": [
+                InputPollOption(option) if isinstance(option, str) else option
+                for option in options
+            ],
             "explanation_parse_mode": explanation_parse_mode,
             "is_anonymous": is_anonymous,
             "type": type,
@@ -6953,6 +7091,8 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
             "explanation_entities": explanation_entities,
             "open_period": open_period,
             "close_date": close_date,
+            "question_parse_mode": question_parse_mode,
+            "question_entities": question_entities,
         }
 
         return await self._send_message(
@@ -6971,6 +7111,7 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
             pool_timeout=pool_timeout,
             api_kwargs=api_kwargs,
             business_connection_id=business_connection_id,
+            message_effect_id=message_effect_id,
         )
 
     async def stop_poll(
@@ -7028,6 +7169,7 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -7074,6 +7216,9 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
             business_connection_id (:obj:`str`, optional): |business_id_str|
 
                 .. versionadded:: 21.1
+            message_effect_id (:obj:`str`, optional): |message_effect_id|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -7121,6 +7266,7 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
             pool_timeout=pool_timeout,
             api_kwargs=api_kwargs,
             business_connection_id=business_connection_id,
+            message_effect_id=message_effect_id,
         )
 
     async def get_my_default_administrator_rights(
@@ -7390,7 +7536,7 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
         minutes.
 
         Returns:
-            :obj:`True`: On success
+            :obj:`True`: On success, :obj:`True` is returned.
 
         Raises:
             :class:`telegram.error.TelegramError`
@@ -7421,7 +7567,7 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
         10 minutes after the bot is launched.
 
         Returns:
-            :obj:`True`: On success
+            :obj:`True`: On success, :obj:`True` is returned.
 
         Raises:
             :class:`telegram.error.TelegramError`
@@ -7449,6 +7595,7 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
         protect_content: ODVInput[bool] = DEFAULT_NONE,
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
+        show_caption_above_media: Optional[bool] = None,
         *,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
         reply_to_message_id: Optional[int] = None,
@@ -7492,6 +7639,9 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
             reply_parameters (:class:`telegram.ReplyParameters`, optional): |reply_parameters|
 
                 .. versionadded:: 20.8
+            show_caption_above_media (:obj:`bool`, optional): Pass |show_cap_above_med|
+
+                .. versionadded:: 21.3
 
         Keyword Args:
             allow_sending_without_reply (:obj:`bool`, optional): |allow_sending_without_reply|
@@ -7514,7 +7664,8 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
                     |keyword_only_arg|
 
         Returns:
-            :class:`telegram.MessageId`: On success
+            :class:`telegram.MessageId`: On success, the :class:`telegram.MessageId` of the sent
+                message is returned.
 
         Raises:
             :class:`telegram.error.TelegramError`
@@ -7548,6 +7699,7 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
             "reply_markup": reply_markup,
             "message_thread_id": message_thread_id,
             "reply_parameters": reply_parameters,
+            "show_caption_above_media": show_caption_above_media,
         }
 
         result = await self._post(
@@ -7716,7 +7868,7 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
         title: str,
         description: str,
         payload: str,
-        provider_token: str,
+        provider_token: Optional[str],  # This arg is now optional as of Bot API 7.4
         currency: str,
         prices: Sequence["LabeledPrice"],
         max_tip_amount: Optional[int] = None,
@@ -7755,12 +7907,19 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
                 :tg-const:`telegram.Invoice.MAX_PAYLOAD_LENGTH` bytes. This will not be
                 displayed to the user, use for your internal processes.
             provider_token (:obj:`str`): Payments provider token, obtained via
-                `@BotFather <https://t.me/BotFather>`_.
+                `@BotFather <https://t.me/BotFather>`_. Pass an empty string for payments in
+                |tg_stars|.
+
+                .. deprecated:: 21.3
+                    As of Bot API 7.4, this parameter is now optional and future versions of the
+                    library will make it optional as well.
+
             currency (:obj:`str`): Three-letter ISO 4217 currency code, see `more on currencies
-                <https://core.telegram.org/bots/payments#supported-currencies>`_.
+                <https://core.telegram.org/bots/payments#supported-currencies>`_. Pass ``XTR`` for
+                payments in |tg_stars|.
             prices (Sequence[:class:`telegram.LabeledPrice`)]: Price breakdown, a sequence
                 of components (e.g. product price, tax, discount, delivery cost, delivery tax,
-                bonus, etc.).
+                bonus, etc.). Must contain exactly one item for payments in |tg_stars|.
 
                 .. versionchanged:: 20.0
                     |sequenceargs|
@@ -7769,7 +7928,8 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
                 a maximum tip of US$ 1.45 pass ``max_tip_amount = 145``. See the exp parameter in
                 `currencies.json <https://core.telegram.org/bots/payments/currencies.json>`_, it
                 shows the number of digits past the decimal point for each currency (2 for the
-                majority of currencies). Defaults to ``0``.
+                majority of currencies). Defaults to ``0``. Not supported for payments in
+                |tg_stars|.
             suggested_tip_amounts (Sequence[:obj:`int`], optional): An array of
                 suggested amounts of tips in the *smallest* units of the currency (integer, **not**
                 float/double). At most :tg-const:`telegram.Invoice.MAX_TIP_AMOUNTS` suggested tip
@@ -7788,19 +7948,20 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
             photo_width (:obj:`int`, optional): Photo width.
             photo_height (:obj:`int`, optional): Photo height.
             need_name (:obj:`bool`, optional): Pass :obj:`True`, if you require the user's full
-                name to complete the order.
+                name to complete the order. Ignored for payments in |tg_stars|.
             need_phone_number (:obj:`bool`, optional): Pass :obj:`True`, if you require the user's
-                phone number to complete the order.
+                phone number to complete the order. Ignored for payments in |tg_stars|.
             need_email (:obj:`bool`, optional): Pass :obj:`True`, if you require the user's email
-                address to complete the order.
+                address to complete the order. Ignored for payments in |tg_stars|.
             need_shipping_address (:obj:`bool`, optional): Pass :obj:`True`, if you require the
-                user's shipping address to complete the order.
+                user's shipping address to complete the order. Ignored for payments in
+                |tg_stars|.
             send_phone_number_to_provider (:obj:`bool`, optional): Pass :obj:`True`, if user's
-                phone number should be sent to provider.
+                phone number should be sent to provider. Ignored for payments in |tg_stars|.
             send_email_to_provider (:obj:`bool`, optional): Pass :obj:`True`, if user's email
-                address should be sent to provider.
+                address should be sent to provider. Ignored for payments in |tg_stars|.
             is_flexible (:obj:`bool`, optional): Pass :obj:`True`, if the final price depends on
-                the shipping method.
+                the shipping method. Ignored for payments in |tg_stars|.
 
         Returns:
             :class:`str`: On success, the created invoice link is returned.
@@ -8868,7 +9029,48 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
             api_kwargs=api_kwargs,
         )
 
-    def to_dict(self, recursive: bool = True) -> JSONDict:
+    async def refund_star_payment(
+        self,
+        user_id: int,
+        telegram_payment_charge_id: str,
+        *,
+        read_timeout: ODVInput[float] = DEFAULT_NONE,
+        write_timeout: ODVInput[float] = DEFAULT_NONE,
+        connect_timeout: ODVInput[float] = DEFAULT_NONE,
+        pool_timeout: ODVInput[float] = DEFAULT_NONE,
+        api_kwargs: Optional[JSONDict] = None,
+    ) -> bool:
+        """Refunds a successful payment in |tg_stars|.
+
+        .. versionadded:: 21.3
+
+        Args:
+            user_id (:obj:`int`): User identifier of the user whose payment will be refunded.
+            telegram_payment_charge_id (:obj:`str`): Telegram payment identifier.
+
+        Returns:
+            :obj:`bool`: On success, :obj:`True` is returned.
+
+        Raises:
+            :class:`telegram.error.TelegramError`
+
+        """
+        data: JSONDict = {
+            "user_id": user_id,
+            "telegram_payment_charge_id": telegram_payment_charge_id,
+        }
+
+        return await self._post(
+            "refundStarPayment",
+            data,
+            read_timeout=read_timeout,
+            write_timeout=write_timeout,
+            connect_timeout=connect_timeout,
+            pool_timeout=pool_timeout,
+            api_kwargs=api_kwargs,
+        )
+
+    def to_dict(self, recursive: bool = True) -> JSONDict:  # noqa: ARG002
         """See :meth:`telegram.TelegramObject.to_dict`."""
         data: JSONDict = {"id": self.id, "username": self.username, "first_name": self.first_name}
 
@@ -9118,3 +9320,5 @@ CUSTOM_EMOJI_IDENTIFIER_LIMIT` custom emoji identifiers can be specified.
     """Alias for :meth:`get_business_connection`"""
     replaceStickerInSet = replace_sticker_in_set
     """Alias for :meth:`replace_sticker_in_set`"""
+    refundStarPayment = refund_star_payment
+    """Alias for :meth:`refund_star_payment`"""

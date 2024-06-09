@@ -50,8 +50,8 @@ from telegram import (
     BotShortDescription,
     BusinessConnection,
     CallbackQuery,
-    Chat,
     ChatAdministratorRights,
+    ChatFullInfo,
     ChatInviteLink,
     ChatMember,
     ChatPermissions,
@@ -64,6 +64,7 @@ from telegram import (
     InlineKeyboardMarkup,
     InlineQueryResultsButton,
     InputMedia,
+    InputPollOption,
     LinkPreviewOptions,
     Location,
     MaskPosition,
@@ -113,7 +114,7 @@ if TYPE_CHECKING:
     )
     from telegram.ext import BaseRateLimiter, Defaults
 
-HandledTypes = TypeVar("HandledTypes", bound=Union[Message, CallbackQuery, Chat])
+HandledTypes = TypeVar("HandledTypes", bound=Union[Message, CallbackQuery, ChatFullInfo])
 KT = TypeVar("KT", bound=ReplyMarkup)
 
 
@@ -262,7 +263,10 @@ class ExtBot(Bot, Generic[RLARGS]):
 
     @classmethod
     def _warn(
-        cls, message: str, category: Type[Warning] = PTBUserWarning, stacklevel: int = 0
+        cls,
+        message: Union[str, PTBUserWarning],
+        category: Type[Warning] = PTBUserWarning,
+        stacklevel: int = 0,
     ) -> None:
         """We override this method to add one more level to the stacklevel, so that the warning
         points to the user's code, not to the PTB code.
@@ -436,6 +440,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         # 3) set the correct parse_mode for all InputMedia objects
         # 4) handle the LinkPreviewOptions case (see below)
         # 5) handle the ReplyParameters case (see below)
+        # 6) handle text_parse_mode in InputPollOption
         for key, val in data.items():
             # 1)
             if isinstance(val, DefaultValue):
@@ -486,6 +491,21 @@ class ExtBot(Bot, Generic[RLARGS]):
                     )
 
                 data[key] = new_value
+
+            # 6)
+            elif isinstance(val, Sequence) and all(
+                isinstance(obj, InputPollOption) for obj in val
+            ):
+                new_val = []
+                for option in val:
+                    if not isinstance(option.text_parse_mode, DefaultValue):
+                        new_val.append(option)
+                    else:
+                        new_option = copy(option)
+                        with new_option._unfrozen():
+                            new_option.text_parse_mode = self.defaults.text_parse_mode
+                        new_val.append(new_option)
+                data[key] = new_val
 
     def _replace_keyboard(self, reply_markup: Optional[KT]) -> Optional[KT]:
         # If the reply_markup is an inline keyboard and we allow arbitrary callback data, let the
@@ -554,7 +574,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             self.callback_data_cache.process_message(message=obj)
             return obj  # type: ignore[return-value]
 
-        if isinstance(obj, Chat) and obj.pinned_message:
+        if isinstance(obj, ChatFullInfo) and obj.pinned_message:
             self.callback_data_cache.process_message(obj.pinned_message)
 
         return obj
@@ -573,6 +593,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         link_preview_options: ODVInput["LinkPreviewOptions"] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -604,6 +625,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             pool_timeout=pool_timeout,
             api_kwargs=api_kwargs,
             business_connection_id=business_connection_id,
+            message_effect_id=message_effect_id,
         )
         if isinstance(result, Message):
             self._insert_callback_data(result)
@@ -778,6 +800,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         protect_content: ODVInput[bool] = DEFAULT_NONE,
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
+        show_caption_above_media: Optional[bool] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -808,6 +831,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             connect_timeout=connect_timeout,
             pool_timeout=pool_timeout,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
+            show_caption_above_media=show_caption_above_media,
         )
 
     async def copy_messages(
@@ -853,7 +877,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         pool_timeout: ODVInput[float] = DEFAULT_NONE,
         api_kwargs: Optional[JSONDict] = None,
         rate_limit_args: Optional[RLARGS] = None,
-    ) -> Chat:
+    ) -> ChatFullInfo:
         # We override this method to call self._insert_callback_data
         result = await super().get_chat(
             chat_id=chat_id,
@@ -1126,7 +1150,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         title: str,
         description: str,
         payload: str,
-        provider_token: str,
+        provider_token: Optional[str],
         currency: str,
         prices: Sequence["LabeledPrice"],
         max_tip_amount: Optional[int] = None,
@@ -1185,7 +1209,6 @@ class ExtBot(Bot, Generic[RLARGS]):
         name: str,
         title: str,
         stickers: Sequence["InputSticker"],
-        sticker_format: Optional[str] = None,
         sticker_type: Optional[str] = None,
         needs_repainting: Optional[bool] = None,
         *,
@@ -1201,7 +1224,6 @@ class ExtBot(Bot, Generic[RLARGS]):
             name=name,
             title=title,
             stickers=stickers,
-            sticker_format=sticker_format,
             sticker_type=sticker_type,
             needs_repainting=needs_repainting,
             read_timeout=read_timeout,
@@ -1488,6 +1510,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         reply_markup: Optional["InlineKeyboardMarkup"] = None,
         parse_mode: ODVInput[str] = DEFAULT_NONE,
         caption_entities: Optional[Sequence["MessageEntity"]] = None,
+        show_caption_above_media: Optional[bool] = None,
         *,
         read_timeout: ODVInput[float] = DEFAULT_NONE,
         write_timeout: ODVInput[float] = DEFAULT_NONE,
@@ -1509,6 +1532,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             connect_timeout=connect_timeout,
             pool_timeout=pool_timeout,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
+            show_caption_above_media=show_caption_above_media,
         )
 
     async def edit_message_live_location(
@@ -1522,6 +1546,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         horizontal_accuracy: Optional[float] = None,
         heading: Optional[int] = None,
         proximity_alert_radius: Optional[int] = None,
+        live_period: Optional[int] = None,
         *,
         location: Optional[Location] = None,
         read_timeout: ODVInput[float] = DEFAULT_NONE,
@@ -1541,6 +1566,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             horizontal_accuracy=horizontal_accuracy,
             heading=heading,
             proximity_alert_radius=proximity_alert_radius,
+            live_period=live_period,
             location=location,
             read_timeout=read_timeout,
             write_timeout=write_timeout,
@@ -2359,6 +2385,8 @@ class ExtBot(Bot, Generic[RLARGS]):
         thumbnail: Optional[FileInput] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
+        show_caption_above_media: Optional[bool] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -2395,6 +2423,8 @@ class ExtBot(Bot, Generic[RLARGS]):
             business_connection_id=business_connection_id,
             pool_timeout=pool_timeout,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
+            message_effect_id=message_effect_id,
+            show_caption_above_media=show_caption_above_media,
         )
 
     async def send_audio(
@@ -2414,6 +2444,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         thumbnail: Optional[FileInput] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -2449,6 +2480,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             connect_timeout=connect_timeout,
             pool_timeout=pool_timeout,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
+            message_effect_id=message_effect_id,
         )
 
     async def send_chat_action(
@@ -2490,6 +2522,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -2521,6 +2554,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             pool_timeout=pool_timeout,
             business_connection_id=business_connection_id,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
+            message_effect_id=message_effect_id,
         )
 
     async def send_dice(
@@ -2533,6 +2567,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -2559,6 +2594,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             connect_timeout=connect_timeout,
             pool_timeout=pool_timeout,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
+            message_effect_id=message_effect_id,
         )
 
     async def send_document(
@@ -2576,6 +2612,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         thumbnail: Optional[FileInput] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -2609,6 +2646,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             connect_timeout=connect_timeout,
             pool_timeout=pool_timeout,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
+            message_effect_id=message_effect_id,
         )
 
     async def send_game(
@@ -2621,6 +2659,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -2647,6 +2686,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             connect_timeout=connect_timeout,
             pool_timeout=pool_timeout,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
+            message_effect_id=message_effect_id,
         )
 
     async def send_invoice(
@@ -2655,7 +2695,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         title: str,
         description: str,
         payload: str,
-        provider_token: str,
+        provider_token: Optional[str],
         currency: str,
         prices: Sequence["LabeledPrice"],
         start_parameter: Optional[str] = None,
@@ -2678,6 +2718,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         protect_content: ODVInput[bool] = DEFAULT_NONE,
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
+        message_effect_id: Optional[str] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -2723,6 +2764,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             connect_timeout=connect_timeout,
             pool_timeout=pool_timeout,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
+            message_effect_id=message_effect_id,
         )
 
     async def send_location(
@@ -2740,6 +2782,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -2773,6 +2816,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             business_connection_id=business_connection_id,
             pool_timeout=pool_timeout,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
+            message_effect_id=message_effect_id,
         )
 
     async def send_media_group(
@@ -2786,6 +2830,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -2817,6 +2862,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             business_connection_id=business_connection_id,
             parse_mode=parse_mode,
             caption_entities=caption_entities,
+            message_effect_id=message_effect_id,
         )
 
     async def send_message(
@@ -2832,6 +2878,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         link_preview_options: ODVInput["LinkPreviewOptions"] = DEFAULT_NONE,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         disable_web_page_preview: Optional[bool] = None,
         reply_to_message_id: Optional[int] = None,
@@ -2863,6 +2910,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             pool_timeout=pool_timeout,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
             link_preview_options=link_preview_options,
+            message_effect_id=message_effect_id,
         )
 
     async def send_photo(
@@ -2879,6 +2927,8 @@ class ExtBot(Bot, Generic[RLARGS]):
         has_spoiler: Optional[bool] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
+        show_caption_above_media: Optional[bool] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -2911,13 +2961,15 @@ class ExtBot(Bot, Generic[RLARGS]):
             connect_timeout=connect_timeout,
             pool_timeout=pool_timeout,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
+            message_effect_id=message_effect_id,
+            show_caption_above_media=show_caption_above_media,
         )
 
     async def send_poll(
         self,
         chat_id: Union[int, str],
         question: str,
-        options: Sequence[str],
+        options: Sequence[Union[str, "InputPollOption"]],
         is_anonymous: Optional[bool] = None,
         type: Optional[str] = None,  # pylint: disable=redefined-builtin
         allows_multiple_answers: Optional[bool] = None,
@@ -2934,6 +2986,9 @@ class ExtBot(Bot, Generic[RLARGS]):
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        question_parse_mode: ODVInput[str] = DEFAULT_NONE,
+        question_entities: Optional[Sequence["MessageEntity"]] = None,
+        message_effect_id: Optional[str] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -2971,6 +3026,9 @@ class ExtBot(Bot, Generic[RLARGS]):
             connect_timeout=connect_timeout,
             pool_timeout=pool_timeout,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
+            question_parse_mode=question_parse_mode,
+            question_entities=question_entities,
+            message_effect_id=message_effect_id,
         )
 
     async def send_sticker(
@@ -2984,6 +3042,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         emoji: Optional[str] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -3011,6 +3070,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             pool_timeout=pool_timeout,
             emoji=emoji,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
+            message_effect_id=message_effect_id,
         )
 
     async def send_venue(
@@ -3030,6 +3090,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -3065,6 +3126,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             connect_timeout=connect_timeout,
             pool_timeout=pool_timeout,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
+            message_effect_id=message_effect_id,
         )
 
     async def send_video(
@@ -3086,6 +3148,8 @@ class ExtBot(Bot, Generic[RLARGS]):
         thumbnail: Optional[FileInput] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
+        show_caption_above_media: Optional[bool] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -3123,6 +3187,8 @@ class ExtBot(Bot, Generic[RLARGS]):
             connect_timeout=connect_timeout,
             pool_timeout=pool_timeout,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
+            message_effect_id=message_effect_id,
+            show_caption_above_media=show_caption_above_media,
         )
 
     async def send_video_note(
@@ -3138,6 +3204,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         thumbnail: Optional[FileInput] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -3169,6 +3236,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             pool_timeout=pool_timeout,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
             business_connection_id=business_connection_id,
+            message_effect_id=message_effect_id,
         )
 
     async def send_voice(
@@ -3185,6 +3253,7 @@ class ExtBot(Bot, Generic[RLARGS]):
         message_thread_id: Optional[int] = None,
         reply_parameters: Optional["ReplyParameters"] = None,
         business_connection_id: Optional[str] = None,
+        message_effect_id: Optional[str] = None,
         *,
         reply_to_message_id: Optional[int] = None,
         allow_sending_without_reply: ODVInput[bool] = DEFAULT_NONE,
@@ -3217,6 +3286,7 @@ class ExtBot(Bot, Generic[RLARGS]):
             pool_timeout=pool_timeout,
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
             business_connection_id=business_connection_id,
+            message_effect_id=message_effect_id,
         )
 
     async def set_chat_administrator_custom_title(
@@ -4087,6 +4157,28 @@ class ExtBot(Bot, Generic[RLARGS]):
             api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
         )
 
+    async def refund_star_payment(
+        self,
+        user_id: int,
+        telegram_payment_charge_id: str,
+        *,
+        read_timeout: ODVInput[float] = DEFAULT_NONE,
+        write_timeout: ODVInput[float] = DEFAULT_NONE,
+        connect_timeout: ODVInput[float] = DEFAULT_NONE,
+        pool_timeout: ODVInput[float] = DEFAULT_NONE,
+        api_kwargs: Optional[JSONDict] = None,
+        rate_limit_args: Optional[RLARGS] = None,
+    ) -> bool:
+        return await super().refund_star_payment(
+            user_id=user_id,
+            telegram_payment_charge_id=telegram_payment_charge_id,
+            read_timeout=read_timeout,
+            write_timeout=write_timeout,
+            connect_timeout=connect_timeout,
+            pool_timeout=pool_timeout,
+            api_kwargs=self._merge_api_rl_kwargs(api_kwargs, rate_limit_args),
+        )
+
     # updated camelCase aliases
     getMe = get_me
     sendMessage = send_message
@@ -4208,3 +4300,4 @@ class ExtBot(Bot, Generic[RLARGS]):
     setMessageReaction = set_message_reaction
     getBusinessConnection = get_business_connection
     replaceStickerInSet = replace_sticker_in_set
+    refundStarPayment = refund_star_payment

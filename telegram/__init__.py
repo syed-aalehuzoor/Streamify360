@@ -22,6 +22,15 @@ __author__ = "devs@python-telegram-bot.org"
 __all__ = (
     "Animation",
     "Audio",
+    "BackgroundFill",
+    "BackgroundFillFreeformGradient",
+    "BackgroundFillGradient",
+    "BackgroundFillSolid",
+    "BackgroundType",
+    "BackgroundTypeChatTheme",
+    "BackgroundTypeFill",
+    "BackgroundTypePattern",
+    "BackgroundTypeWallpaper",
     "Birthdate",
     "Bot",
     "BotCommand",
@@ -46,6 +55,7 @@ __all__ = (
     "CallbackQuery",
     "Chat",
     "ChatAdministratorRights",
+    "ChatBackground",
     "ChatBoost",
     "ChatBoostAdded",
     "ChatBoostRemoved",
@@ -54,6 +64,7 @@ __all__ = (
     "ChatBoostSourceGiveaway",
     "ChatBoostSourcePremium",
     "ChatBoostUpdated",
+    "ChatFullInfo",
     "ChatInviteLink",
     "ChatJoinRequest",
     "ChatLocation",
@@ -131,6 +142,7 @@ __all__ = (
     "InputMediaPhoto",
     "InputMediaVideo",
     "InputMessageContent",
+    "InputPollOption",
     "InputSticker",
     "InputTextMessageContent",
     "InputVenueMessageContent",
@@ -230,6 +242,7 @@ __all__ = (
     "warnings",
 )
 
+from pathlib import Path
 
 from . import _version, constants, error, helpers, request, warnings
 from ._birthdate import Birthdate
@@ -258,6 +271,18 @@ from ._business import (
 from ._callbackquery import CallbackQuery
 from ._chat import Chat
 from ._chatadministratorrights import ChatAdministratorRights
+from ._chatbackground import (
+    BackgroundFill,
+    BackgroundFillFreeformGradient,
+    BackgroundFillGradient,
+    BackgroundFillSolid,
+    BackgroundType,
+    BackgroundTypeChatTheme,
+    BackgroundTypeFill,
+    BackgroundTypePattern,
+    BackgroundTypeWallpaper,
+    ChatBackground,
+)
 from ._chatboost import (
     ChatBoost,
     ChatBoostAdded,
@@ -269,6 +294,7 @@ from ._chatboost import (
     ChatBoostUpdated,
     UserChatBoosts,
 )
+from ._chatfullinfo import ChatFullInfo
 from ._chatinvitelink import ChatInviteLink
 from ._chatjoinrequest import ChatJoinRequest
 from ._chatlocation import ChatLocation
@@ -403,7 +429,7 @@ from ._payment.shippingaddress import ShippingAddress
 from ._payment.shippingoption import ShippingOption
 from ._payment.shippingquery import ShippingQuery
 from ._payment.successfulpayment import SuccessfulPayment
-from ._poll import Poll, PollAnswer, PollOption
+from ._poll import InputPollOption, Poll, PollAnswer, PollOption
 from ._proximityalerttriggered import ProximityAlertTriggered
 from ._reaction import ReactionCount, ReactionType, ReactionTypeCustomEmoji, ReactionTypeEmoji
 from ._reply import ExternalReplyInfo, ReplyParameters, TextQuote
@@ -417,6 +443,7 @@ from ._telegramobject import TelegramObject
 from ._update import Update
 from ._user import User
 from ._userprofilephotos import UserProfilePhotos
+from ._utils.warnings import warn
 from ._videochat import (
     VideoChatEnded,
     VideoChatParticipantsInvited,
@@ -450,3 +477,28 @@ __bot_api_version__: str = _version.__bot_api_version__
 #:
 #: .. versionadded:: 20.0
 __bot_api_version_info__: constants._BotAPIVersion = _version.__bot_api_version_info__
+
+
+if not (Path(__file__).parent.resolve().absolute() / "ext").exists():
+    _MESSAGE = (
+        "Hey. You seem to be using the `python-telegram-bot-raw` library. "
+        "Please note that this libray has been deprecated and will no longer be updated. "
+        "Please instead use the `python-telegram-bot` library. The change requires no "
+        "changes in your code and requires no additional dependencies. For additional "
+        "information, please see the channel post at "
+        "https://t.me/pythontelegrambotchannel/145."
+    )
+
+    # DeprecationWarning is ignored by default in Python 3.7 and later by default outside
+    # __main__ modules. We use both warning categories to increase the chance of the user
+    # seeing the warning.
+
+    warn(
+        warnings.PTBDeprecationWarning(version="21.3", message=_MESSAGE),
+        stacklevel=2,
+    )
+    warn(
+        message=_MESSAGE,
+        category=warnings.PTBUserWarning,
+        stacklevel=2,
+    )
