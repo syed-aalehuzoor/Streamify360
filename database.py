@@ -1,4 +1,3 @@
-import pickle
 import json
 import datetime
 import schedule
@@ -10,7 +9,8 @@ bot_token = '7189345969:AAH6NnFud_Ey6DfDUsi0w_MReJ-jE0wibuU'
 plans = [
     {
         'name':'Basic',
-        'price': 5,
+        'price': 0,
+        'limit': 50000000,
         'features': [
             'Feature 1',
             'Feature 2',
@@ -22,6 +22,7 @@ plans = [
     {
         'name':'Standard',
         'price': 15,
+        'limit': 100000000,
         'features': [
             'Feature 1',
             'Feature 2',
@@ -33,6 +34,7 @@ plans = [
     {
         'name':'Premium',
         'price': 35,
+        'limit': 1000000000,
         'features': [
             'Feature 1',
             'Feature 2',
@@ -60,12 +62,12 @@ class Users:
             self.users[userid] = {
                 'userid': userid,
                 'username': username,
-                'plan': plans[0],
+                'plan': '0',
                 'startdate': datetime.datetime.now().date().isoformat()
                 }
         self.save_json()
 
-    def subscribe(self, userid: str, plan):
+    def subscribe(self, userid: str, plan: str):
         if userid in self.users:
             self.users[userid]['plan'] = plan
             self.users[userid]['startdate'] = datetime.datetime.now().date().isoformat()
@@ -76,13 +78,19 @@ class Users:
             return self.users[userid]
         return False
 
+    def request_invalid(self, userid: str, size: int):
+        if userid in self.users:
+            if plans[int(self.users[userid]['plan'])]['limit'] < size:
+                return True
+        return False
+
     def unsubscribe_expired_users(self):
         for userid, user in list(self.users.items()):  # Use list() to avoid modifying dict during iteration
             if user.start_date:
                 if datetime.datetime.now() - user.start_date > datetime.timedelta(days=30):
-                    self.users[userid].plan = plans[0]
+                    self.users[userid].plan = '0'
         self.save_json()
 
 user_plans = Users()
 
-schedule.every().day.at("00:01").do(job_func=user_plans.unsubscribe_expired_users)
+schedule.every().hour.do(job_func=user_plans.unsubscribe_expired_users)
