@@ -123,7 +123,7 @@
     }"
     id="sidebar-multi-level-sidebar"
     x-show="!openSidebar"
-    class="bg-primary w-72 z-20 fixed left-0 inset-y-0 h-full sm:hidden overflow-y-auto">
+    class="bg-primary w-72 z-20 left-0 sm:hidden overflow-y-auto">
     
     <div class="py-4  text-gray-500">
         <!-- Sidebar Menu -->

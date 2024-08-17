@@ -16,7 +16,7 @@
     <body class="bg-accent" x-data="{openSidebar: true}">  
         @livewire('admin-header')
         
-        <div class="flex">
+        <div class="flex flex-row">
             <x-admin-navigation />
             
             <!-- Page Content -->
