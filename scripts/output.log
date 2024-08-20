@@ -1,0 +1,253 @@
+Server Id: 59
+Successfully connected to the database
+Server Instance: {'id': 59, 'name': 'test', 'ip': '1.1.1.1', 'ssh_port': 22, 'username': 'root', 'domain': 'test.com', 'status': 'pending', 'type': 'encoder', 'limit': 22, 'total_videos': 0, 'created_at': datetime.datetime(2024, 8, 19, 17, 4, 7), 'updated_at': datetime.datetime(2024, 8, 19, 17, 4, 7)}
+Updated status to 1
+Updated status to 2
+Updated status to 3
+Updated status to 4
+Updated status to 5
+Updated status to 6
+Updated status to 7
+Updated status to 8
+Updated status to 9
+Updated status to 10
+MySQL connection is closed
+2024-08-20 00:40:07,833 - INFO - Server Id: 72
+2024-08-20 00:40:08,022 - INFO - Successfully connected to the database
+2024-08-20 00:40:09,128 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 00:40:10,406 - INFO - Authentication (publickey) successful!
+2024-08-20 00:40:10,408 - INFO - Executing command: sudo apt update
+2024-08-20 00:40:13,208 - ERROR - Error executing command 'sudo apt update': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 00:40:13,210 - INFO - Executing command: sudo apt install -y nginx
+2024-08-20 00:40:14,473 - ERROR - Error executing command 'sudo apt install -y nginx': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 00:40:14,476 - INFO - Executing command: sudo systemctl enable nginx
+2024-08-20 00:40:15,903 - ERROR - Error executing command 'sudo systemctl enable nginx': Synchronizing state of nginx.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable nginx
+
+2024-08-20 00:40:15,906 - INFO - Executing command: sudo systemctl restart nginx
+2024-08-20 00:40:16,797 - INFO - Executing command: sudo ufw allow "Nginx Full"
+2024-08-20 00:40:17,714 - INFO - Executing command: sudo ufw reload
+2024-08-20 00:40:18,552 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 00:40:21,545 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 00:40:21,549 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 00:40:22,829 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 00:40:22,833 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-20 00:40:23,666 - INFO - Executing command: grep -q "add_header Access-Control-Allow-Origin" /etc/nginx/nginx.conf || sudo sed -i "/^http {/a \ \ \ \ \tadd_header Access-Control-Allow-Origin *;" /etc/nginx/nginx.conf
+2024-08-20 00:40:24,423 - INFO - Executing command: sudo service nginx restart
+2024-08-20 00:40:25,306 - INFO - SSH connection closed
+2024-08-20 00:40:25,307 - INFO - MySQL connection is closed
+2024-08-20 09:59:08,746 - INFO - Server Id: 73
+2024-08-20 09:59:08,906 - INFO - Successfully connected to the database
+2024-08-20 10:00:29,210 - INFO - Server Id: 74
+2024-08-20 10:00:29,345 - INFO - Successfully connected to the database
+2024-08-20 10:00:30,515 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 10:00:32,059 - INFO - Authentication (publickey) successful!
+2024-08-20 10:00:32,066 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 10:00:35,369 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 10:00:35,369 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 10:00:36,781 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 10:00:36,781 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-20 10:00:37,696 - INFO - SSH connection closed
+2024-08-20 10:00:37,696 - INFO - MySQL connection is closed
+2024-08-20 11:10:00,955 - INFO - Server Id: 75
+2024-08-20 11:10:01,141 - INFO - Successfully connected to the database
+2024-08-20 15:40:19,475 - INFO - Server Id: 76
+2024-08-20 15:40:19,675 - INFO - Successfully connected to the database
+2024-08-20 15:40:20,944 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 15:40:22,427 - INFO - Authentication (publickey) successful!
+2024-08-20 15:40:22,434 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 15:40:27,627 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:40:27,627 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 15:40:29,015 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:40:29,024 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-20 15:40:29,814 - INFO - SSH connection closed
+2024-08-20 15:40:29,814 - INFO - MySQL connection is closed
+2024-08-20 15:43:26,048 - INFO - Server Id: 77
+2024-08-20 15:43:26,250 - INFO - Successfully connected to the database
+2024-08-20 15:43:27,860 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 15:43:29,401 - INFO - Authentication (publickey) successful!
+2024-08-20 15:43:29,409 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 15:43:32,718 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:43:32,719 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 15:43:34,191 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:43:34,191 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-20 15:43:35,170 - INFO - SSH connection closed
+2024-08-20 15:43:35,170 - INFO - MySQL connection is closed
+2024-08-20 15:44:33,133 - INFO - Server Id: 78
+2024-08-20 15:44:33,268 - INFO - Successfully connected to the database
+2024-08-20 15:44:34,680 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 15:44:36,411 - INFO - Authentication (publickey) successful!
+2024-08-20 15:44:36,421 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 15:44:39,857 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:44:39,861 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 15:44:41,480 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:44:41,488 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-20 15:44:42,590 - INFO - SSH connection closed
+2024-08-20 15:44:42,590 - INFO - MySQL connection is closed
+2024-08-20 15:46:23,276 - INFO - Server Id: 79
+2024-08-20 15:46:23,485 - INFO - Successfully connected to the database
+2024-08-20 15:46:25,109 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 15:46:26,671 - INFO - Authentication (publickey) successful!
+2024-08-20 15:46:26,677 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 15:46:30,017 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:46:30,022 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 15:46:31,446 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:46:31,451 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-20 15:46:32,426 - INFO - SSH connection closed
+2024-08-20 15:46:32,427 - INFO - MySQL connection is closed
+2024-08-20 15:46:48,677 - INFO - Server Id: 80
+2024-08-20 15:46:48,845 - INFO - Successfully connected to the database
+2024-08-20 15:46:52,826 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 15:46:54,670 - INFO - Authentication (publickey) successful!
+2024-08-20 15:46:54,677 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 15:46:58,019 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:46:58,021 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 15:46:59,407 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:46:59,413 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-20 15:47:00,327 - INFO - SSH connection closed
+2024-08-20 15:47:00,327 - INFO - MySQL connection is closed
+2024-08-20 16:09:30,963 - INFO - Server Id: 81
+2024-08-20 16:09:31,143 - INFO - Successfully connected to the database
+2024-08-20 18:39:27,341 - INFO - Server Id: 1
+2024-08-20 18:39:27,522 - INFO - Successfully connected to the database
+2024-08-20 18:39:28,714 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 18:39:30,210 - INFO - Authentication (publickey) successful!
+2024-08-20 18:39:30,210 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 18:40:04,848 - INFO - Server Id: 2
+2024-08-20 18:40:04,995 - INFO - Successfully connected to the database
+2024-08-20 18:40:06,144 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 18:40:07,682 - INFO - Authentication (publickey) successful!
+2024-08-20 18:40:07,684 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 18:40:13,542 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 18:40:13,542 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 18:40:15,013 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 18:40:15,013 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-20 18:40:15,883 - INFO - SSH connection closed
+2024-08-20 18:40:15,883 - INFO - MySQL connection is closed
+2024-08-20 18:40:16,191 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+
+2024-08-20 18:40:16,199 - INFO - Executing command: sudo apt install -y nginx
+2024-08-20 18:40:26,714 - ERROR - Error executing command 'sudo apt install -y nginx': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+
+2024-08-20 18:40:26,714 - INFO - Executing command: sudo systemctl enable nginx
+2024-08-20 18:40:28,364 - ERROR - Error executing command 'sudo systemctl enable nginx': Synchronizing state of nginx.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable nginx
+
+2024-08-20 18:40:28,364 - INFO - Executing command: sudo systemctl restart nginx
+2024-08-20 18:40:29,281 - INFO - Executing command: sudo ufw allow "Nginx Full"
+2024-08-20 18:40:30,371 - INFO - Executing command: sudo ufw reload
+2024-08-20 18:40:31,362 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 18:41:09,234 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+
+2024-08-20 18:41:09,252 - INFO - Executing command: grep -q "add_header Access-Control-Allow-Origin" /etc/nginx/nginx.conf || sudo sed -i "/^http {/a \ \ \ \ \tadd_header Access-Control-Allow-Origin *;" /etc/nginx/nginx.conf
+2024-08-20 18:41:10,174 - INFO - Executing command: sudo service nginx restart
+2024-08-20 18:41:11,137 - INFO - SSH connection closed
+2024-08-20 18:41:11,138 - INFO - MySQL connection is closed

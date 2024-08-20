@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\Admin\ServerController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,22 +43,26 @@ Route::middleware([
 Route::middleware([
     'admin',
 ])->group(function () {
-    Route::get('/admin', function () {
-        return view('admin.dashboard');
-    })->name('admin');
-    Route::get('/admin/videos', function () {
-        return view('admin.videos');
-    })->name('admin-all-videos');
-    Route::get('/admin/processes', function () {
-        return view('admin.processes');
-    })->name('Processes');
-    Route::get('/admin/abuse-reports', function () {
-        return view('admin.abuse-reports');
-    })->name('abuse-reports');
-    Route::get('/admin/servers', function () {
-        return view('admin.servers');
-    })->name('admin-servers');
-    Route::get('/admin/servers/add', function () {
-        return view('admin.add-servers');
-    })->name('admin-add-server');
+
+    // Dashboard Routes
+    Route::get('/admin', [DashboardController::class, 'dashboard'])->name('admin');
+    Route::get('/admin/videos', [DashboardController::class, 'videos'])->name('admin-all-videos');
+    Route::get('/admin/processes', [DashboardController::class, 'processes'])->name('Processes');
+    Route::get('/admin/abuse-reports', [DashboardController::class, 'abuseReports'])->name('abuse-reports');
+
+    // Server Manager Routes
+    Route::get('/admin/servers', [ServerController::class, 'index'])->name('admin-servers');
+    Route::get('/admin/servers/add', [ServerController::class, 'create'])->name('admin-add-server');
+    Route::post('/admin/servers', [ServerController::class, 'store'])->name('admin-store-server');
+
+    // User Manager Routes
+    Route::get('/admin/users', [UserController::class, 'index'])->name('admin-users');
+    Route::post('/admin/users', [UserController::class, 'store'])->name('users.store');
+    Route::get('/admin/users/{user}', [UserController::class, 'show'])->name('users.show');
+    Route::get('/admin/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/admin/users/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::patch('/admin/users/{user}/suspend', [UserController::class, 'suspend'])->name('users.suspend');
+    Route::patch('/admin/users/{user}/activate', [UserController::class, 'activate'])->name('users.activate');
+
 });

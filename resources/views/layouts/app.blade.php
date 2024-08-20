@@ -7,31 +7,29 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <!-- Styles -->
         @livewireStyles
-    </head>
-    <body class="font-sans antialiased">  
-        
-        <div class="flex h-screen" x-data="{openSidebar: true}">
-            <x-navigation />
 
+    </head>
+    <body class="bg-accent" x-data="{openSidebar: true}">  
+        @livewire('admin-header')
+        
+        <div class="flex flex-row">
+            <x-navigation />
+            
             <!-- Page Content -->
             <div class="flex flex-col flex-1 w-full">
-                <main>
-                    @livewire('header')                    
+
+                <main class="h-full overflow-y-auto">
                     {{ $slot }}    
                 </main>
-                @stack('modals')
 
-                @livewireScripts
             </div>
+
+                @stack('modals')
+                @livewireScripts
 
         </div>
     </body>
