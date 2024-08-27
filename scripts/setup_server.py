@@ -89,7 +89,8 @@ try:
                             ('Allowing Nginx through UFW', 'sudo ufw allow "Nginx Full"'),
                             ('Reloading UFW', 'sudo ufw reload'),
                             ('Configuring Nginx CORS', r'grep -q "add_header Access-Control-Allow-Origin" /etc/nginx/nginx.conf || sudo sed -i "/^http {/a \ \ \ \ \tadd_header Access-Control-Allow-Origin *;" /etc/nginx/nginx.conf'),
-                            ('Restarting Nginx Service', 'sudo service nginx restart')
+                            ('Restarting Nginx Service', 'sudo service nginx restart'),
+                            ('Creating Directory for Streams', 'sudo mkdir -p /var/www/html/streams/')
                         ])
 
                     for status, command in statuses:
@@ -108,6 +109,13 @@ try:
                         if exit_status != 0:
                             logging.error(f"Command '{command}' failed with exit status {exit_status}")
                             raise Exception("Command execution error")
+                    if type == 'encoder':
+                        rsa_key_path = os.path.join(script_dir, 'id_rsa')
+                        try:
+                            with client.open_sftp() as sftp:
+                                sftp.put(localpath=rsa_key_path, remotepath='/home/ubuntu/id_rsa')
+                        except Exception as e:
+                            logging.error(f"Configuration failed at here: {e}")
 
                     # Final status update
                     update_query = "UPDATE servers SET status = %s WHERE id = %s"

@@ -11,16 +11,16 @@
 
         <!-- Styles -->
         @livewireStyles
-
+    
     </head>
-    <body class="bg-accent" x-data="{openSidebar: true}">  
-        @livewire('admin-header')
+    <body class="bg-accent" x-data="{openSidebar: false}">  
+        @livewire('header')
         
-        <div class="flex flex-row">
+        <div class="flex justify-center gap-2 m-1 sm:m-10 flex-row">
             <x-navigation />
             
             <!-- Page Content -->
-            <div class="flex flex-col flex-1 w-full">
+            <div class="flex flex-col w-full sm:w-3/5">
 
                 <main class="h-full overflow-y-auto">
                     {{ $slot }}    
@@ -32,5 +32,6 @@
                 @livewireScripts
 
         </div>
+        
     </body>
 </html>

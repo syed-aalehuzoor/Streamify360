@@ -38,9 +38,21 @@
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     @foreach ($servers as $server)
                                         <tr>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                {{ $server->name }}
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="text-sm font-medium text-gray-900">
+                                                    {{ $server->name }}
+                                                </div>
+                                                @if ($server->type == 'encoder')
+                                                    <div class="text-xs">
+                                                        @if ($server->public_userid == 'public')
+                                                            {{ 'Public' }}
+                                                        @else
+                                                            {{'Dedicated For User: '. $server->public_userid }}
+                                                        @endif
+                                                    </div>
+                                                @endif
                                             </td>
+                                            
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                 @if ($server->status !== 'live')
                                                     @livewire('server-status', ['serverId' => $server->id], key($server->id))

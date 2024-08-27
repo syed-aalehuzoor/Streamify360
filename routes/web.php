@@ -4,40 +4,45 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ServerController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\VideoController;
+use App\Http\Controllers\SettingsController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/php', function(){
+    dd(phpinfo());
+});
+
 Route::get('/home', [HomeController::class, 'index']);
+Route::get('/video/{id}', [VideoController::class, 'player'])->name('video.player');
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-    Route::get('/videos', function () {
-        return view('videos');
-    })->name('all-videos');
-    Route::get('/videos/upload-new', function () {
-        return view('upload-video');
-    })->name('add-video');
-    Route::get('/settings/general', function () {
-        return view('general-settings');
-    })->name('general-settings');
-    Route::get('/settings/video', function () {
-        return view('videos-settings');
-    })->name('video-settings');
-    Route::get('/servers', function () {
-        return view('servers');
-    })->name('all-servers');
-    Route::get('/servers/add-new', function () {
-        return view('add-server');
-    })->name('add-server');
+    
+    // User Dashboard Routes
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    
+    // User Video Routes
+    Route::get('/videos', [VideoController::class, 'index'])->name('all-videos');
+    Route::get('/videos/upload-new', [VideoController::class, 'create'])->name('add-video');
+    Route::post('videos', [VideoController::class, 'store'])->name('videos.store');
+    Route::get('/videos/{id}/edit', [VideoController::class, 'edit'])->name('videos.edit');
+    Route::post('/videos/{id}/edit', [VideoController::class, 'save'])->name('videos.edit');
+    Route::put('/videos/{id}', [VideoController::class, 'update'])->name('videos.update');
+    Route::delete('/videos/{id}', [VideoController::class, 'destroy'])->name('videos.destroy');
+
+    //Users Settings Routes
+    Route::get('/settings/general', [SettingsController::class, 'general'])->name('general-settings');
+    Route::get('/settings/video', [SettingsController::class, 'video'])->name('video-settings');
+
+
 });
 
 Route::middleware([
@@ -45,10 +50,10 @@ Route::middleware([
 ])->group(function () {
 
     // Dashboard Routes
-    Route::get('/admin', [DashboardController::class, 'dashboard'])->name('admin');
-    Route::get('/admin/videos', [DashboardController::class, 'videos'])->name('admin-all-videos');
-    Route::get('/admin/processes', [DashboardController::class, 'processes'])->name('Processes');
-    Route::get('/admin/abuse-reports', [DashboardController::class, 'abuseReports'])->name('abuse-reports');
+    Route::get('/admin', [AdminDashboardController::class, 'dashboard'])->name('admin');
+    Route::get('/admin/videos', [AdminDashboardController::class, 'videos'])->name('admin-all-videos');
+    Route::get('/admin/processes', [AdminDashboardController::class, 'processes'])->name('Processes');
+    Route::get('/admin/abuse-reports', [AdminDashboardController::class, 'abuseReports'])->name('abuse-reports');
 
     // Server Manager Routes
     Route::get('/admin/servers', [ServerController::class, 'index'])->name('admin-servers');

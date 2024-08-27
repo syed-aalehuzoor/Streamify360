@@ -21,11 +21,7 @@ class ServerStatus extends Component
     public function updateStatus()
     {
         $server = Server::find($this->serverId);
-
-        // Example logic to update the status. Replace with actual logic.
-        if ($server->status != 'live') {
-            $this->status = $server->status;
-        }
+        $this->status = $server->status;
     }
 
     public function render()

@@ -31,36 +31,26 @@ class ServerController extends Controller
         // Validate the incoming request data with conditional rules
         $request->validate([
             'name' => 'required|string|max:255',
-            'ip' => 'required|ip',
+            'ip' => 'required|ip|unique:servers,ip',
             'ssh_port' => 'required|integer',
             'username' => 'required|string|max:255',
             'type' => 'required|in:encoder,storage',
-            'domain' => [
-                'nullable',
-                'regex:/^(?!:\/\/)([a-zA-Z0-9-_]+\.)+[a-zA-Z]{2,}$/',
-                function ($attribute, $value, $fail) use ($request) {
-                    if ($request->type === 'storage' && empty($value)) {
-                        $fail('The domain field is required when type is storage.');
-                    }
-                },
-            ],
-            'limit' => [
-                'nullable',
-                'integer',
-                function ($attribute, $value, $fail) use ($request) {
-                    if ($request->type === 'encoder' && is_null($value)) {
-                        $fail('The limit field is required when type is encoder.');
-                    }
-                },
-            ],
+            'encoder_type' => 'required_if:type,encoder|nullable|string|max:255',
+            'domain' => 'required_if:type,storage|nullable|regex:/^(?!:\/\/)([a-zA-Z0-9-_]+\.)+[a-zA-Z]{2,}$/',
+            'limit' => 'required_if:type,encoder|nullable|integer',
+            'dedicated' => 'required_if:type,encoder|boolean',
+            'userid' => 'required_if:dedicated,true|nullable|string|max:255',
         ]);
-    
+
         // Check if a server with the same IP already exists
         $existingServer = Server::where('ip', $request->ip)->first();
     
         if ($existingServer) {
             return redirect()->route('admin-servers')->withErrors(['ip' => 'A server with this IP address already exists.']);
         }
+    
+        // Determine the public_userid based on whether the server is dedicated
+        $publicUserId = $request->dedicated ? $request->userid : 'public';
     
         // Prepare data for server creation
         $serverData = [
@@ -71,29 +61,28 @@ class ServerController extends Controller
             'domain' => $request->domain,
             'status' => 'pending', // Initial status
             'type' => $request->type,
+            'public_userid' => $publicUserId, // Set based on the dedicated field
+            'encoder_type' => $request->encoder_type,
             'total_videos' => 0,
+            'limit' => $request->type === 'encoder' ? $request->limit : 0,
         ];
     
-        // Add 'limit' only if it's not null
-        if ($request->type === 'encoder') {
-            $serverData['limit'] = $request->limit;
-        }
-    
         // Create the server
-        $server = Server::create($serverData);
+        $server = Server::create($serverData);    
     
         // Prepare and run the process to execute the Python script
         $startkey = env('START_KEY');
+        $pythonkey = env('PYTHON_KEY');
         $scriptPath = '../scripts/setup_server.py';
         $serverId = $server->id;
         $command = "python {$scriptPath} --id {$serverId}";
     
-        $process = new Process([$startkey, 'python', $scriptPath, '--id', $serverId],
+        $process = new Process([$startkey, $pythonkey, $scriptPath, '--id', $serverId],
             null,
             ['SYSTEMROOT' => getenv('SYSTEMROOT'), 'PATH' => getenv("PATH")]);
     
         $process->run();
     
         return redirect()->route('admin-servers')->with('success', 'Server added successfully.');
-    }
+    }    
 }

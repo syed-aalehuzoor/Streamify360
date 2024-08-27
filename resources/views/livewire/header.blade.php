@@ -1,14 +1,16 @@
-<header class="z-10 py-4 bg-primary shadow-md">
+<header class="sm:static z-10 py-4 bg-secondary shadow-md w-full">
     <div class="container flex items-center justify-between sm:justify-end h-full px-6 mx-auto text-purple-600 dark:text-purple-300">
         
         <div class="sm:hidden sm:items-center sm:ms-6">
-            <button @click="openSidebar = !openSidebar" id="sidebarToggle" class="text-secondary hover:text-gray-300 focus:outline-none focus:text-gray-300">
+            <button @click="openSidebar = !openSidebar" id="sidebarToggle" class="text-primary hover:text-gray-300 focus:outline-none focus:text-gray-300">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
             </button>
         </div>
-
+        <a href="{{ route('dashboard') }}" class="px-6 flex text-lg text-black font-semibold">
+            <span class="text-xl font-semibold">Streamify <sup class="text-sm font-medium">360</sup></span>
+        </a>
         <div class="sm:items-center sm:ms-6">
             <!-- Teams Dropdown -->
             @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())

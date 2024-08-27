@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string('domain')->nullable();
             $table->string('status');
             $table->enum('type', ['encoder', 'storage']);
-            $table->integer('limit')->default(0); // Define as per your limit type, e.g., storage in GB
+            $table->string('public_userid')->nullable();
+            $table->enum('encoder_type', ['cpu', 'gpu'])->nullable();
+            $table->integer('limit')->default(10);
             $table->integer('total_videos')->default(0);
             $table->timestamps();
         });

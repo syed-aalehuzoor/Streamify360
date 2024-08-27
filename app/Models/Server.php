@@ -17,6 +17,8 @@ class Server extends Model
         'domain',
         'status',
         'type',
+        'encoder_type',
+        'public_userid',
         'limit',
         'total_videos',
     ];
