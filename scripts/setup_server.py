@@ -79,6 +79,9 @@ try:
                     if type == 'encoder':
                         statuses.extend([
                             ('Installing FFmpeg', 'sudo apt install ffmpeg -y'),
+                            ('Installing pip','sudo apt install python3-pip -y'),
+                            ('Installing YT Downloader','pip install yt-dlp'),
+                            ('Installing GDrive Dowloader','pip install gdown'),
                             ('Creating Directory for Streams', 'sudo mkdir -p /var/www/html/streams/')
                         ])
                     elif type == 'storage':

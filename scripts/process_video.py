@@ -7,7 +7,6 @@ from argparse import ArgumentParser
 from paramiko import SSHClient, AutoAddPolicy, RSAKey
 import re
 from time import sleep, time
-from scp import SCPClient
 
 # Global Constants
 HLS_BASE_DIR = "/var/www/html/streams/"

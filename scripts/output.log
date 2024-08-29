@@ -1725,3 +1725,136 @@ WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
 2024-08-27 18:56:24,712 - INFO - Transferred video sP9g0fIreC2 to storage server at datarichml.com
 2024-08-27 18:56:24,712 - INFO - Storage server SSH connection closed
 2024-08-27 18:56:24,712 - INFO - MySQL connection is closed
+2024-08-27 21:14:53,606 - INFO - Server Id: 24
+2024-08-27 21:14:53,773 - INFO - Successfully connected to the database
+2024-08-27 21:14:54,802 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 21:14:56,026 - INFO - Authentication (publickey) successful!
+2024-08-27 21:14:56,026 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-27 21:15:09,073 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+
+2024-08-27 21:15:09,073 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-27 21:15:10,313 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:15:10,313 - INFO - Executing command: sudo apt install python3-pip
+2024-08-27 21:19:04,571 - INFO - Server Id: 25
+2024-08-27 21:19:04,767 - INFO - Successfully connected to the database
+2024-08-27 21:19:05,831 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 21:19:07,046 - INFO - Authentication (publickey) successful!
+2024-08-27 21:19:07,046 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-27 21:19:10,313 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:19:10,313 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-27 21:19:11,541 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:19:11,541 - INFO - Executing command: sudo apt install python3-pip -y
+2024-08-27 21:20:45,301 - INFO - Server Id: 26
+2024-08-27 21:20:45,524 - INFO - Successfully connected to the database
+2024-08-27 21:20:46,529 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 21:20:47,742 - INFO - Authentication (publickey) successful!
+2024-08-27 21:20:47,742 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-27 21:20:51,008 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:20:51,008 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-27 21:20:52,249 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:20:52,249 - INFO - Executing command: sudo apt install python3-pip -y
+2024-08-27 21:20:53,490 - ERROR - Error executing command 'sudo apt install python3-pip -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:20:53,490 - INFO - Executing command: pip install yt-dlp
+2024-08-27 21:20:59,629 - ERROR - Error executing command 'pip install yt-dlp': WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+2024-08-27 21:20:59,629 - INFO - Executing command: pip install gdown
+2024-08-27 21:21:01,842 - ERROR - Error executing command 'pip install gdown': WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+2024-08-27 21:21:01,845 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-27 21:21:03,541 - INFO - [chan 6] Opened sftp connection (server version 3)
+2024-08-27 21:21:04,472 - INFO - [chan 6] sftp session closed.
+2024-08-27 21:21:04,475 - INFO - SSH connection closed
+2024-08-27 21:21:04,476 - INFO - MySQL connection is closed
+2024-08-27 21:34:39,156 - INFO - Server Id: 27
+2024-08-27 21:34:39,381 - INFO - Successfully connected to the database
+2024-08-27 21:34:40,625 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 21:34:42,391 - INFO - Authentication (publickey) successful!
+2024-08-27 21:34:42,391 - ERROR - Configuration failed: 'tuple' object is not callable
+2024-08-27 21:34:42,391 - INFO - SSH connection closed
+2024-08-27 21:34:42,391 - INFO - MySQL connection is closed
+2024-08-27 21:37:38,387 - INFO - Server Id: 28
+2024-08-27 21:37:38,604 - INFO - Successfully connected to the database
+2024-08-27 21:37:39,629 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 21:37:40,909 - INFO - Authentication (publickey) successful!
+2024-08-27 21:37:40,909 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-27 21:37:44,345 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:37:44,345 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-27 21:37:45,887 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:37:45,887 - INFO - Executing command: sudo apt install python3-pip -y
+2024-08-27 21:37:47,207 - ERROR - Error executing command 'sudo apt install python3-pip -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:37:47,207 - INFO - Executing command: pip install yt-dlp
+2024-08-27 21:37:48,844 - ERROR - Error executing command 'pip install yt-dlp': WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+2024-08-27 21:37:48,844 - INFO - Executing command: pip install gdown
+2024-08-27 21:37:50,310 - ERROR - Error executing command 'pip install gdown': WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+2024-08-27 21:37:50,325 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-27 21:37:52,053 - INFO - [chan 6] Opened sftp connection (server version 3)
+2024-08-27 21:37:53,028 - INFO - [chan 6] sftp session closed.
+2024-08-27 21:37:53,028 - INFO - SSH connection closed
+2024-08-27 21:37:53,028 - INFO - MySQL connection is closed
+2024-08-27 22:03:06,520 - INFO - Video Id: LxqtvUUot4c
+2024-08-27 22:03:06,761 - INFO - Successfully connected to the database
+2024-08-27 22:03:07,863 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 22:03:09,640 - INFO - Authentication (publickey) successful!
+2024-08-27 22:03:11,265 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-27 22:04:02,195 - INFO - [chan 0] sftp session closed.
+2024-08-27 22:04:15,372 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-27 22:04:39,981 - INFO - [chan 4] sftp session closed.
+2024-08-27 22:04:54,722 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-27 22:05:16,444 - INFO - [chan 7] sftp session closed.
+2024-08-27 22:05:31,976 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-27 22:05:49,866 - INFO - [chan 10] sftp session closed.
+2024-08-27 22:05:50,952 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-27 22:05:53,646 - INFO - [chan 11] sftp session closed.
+2024-08-27 22:05:55,359 - INFO - Transferred video LxqtvUUot4c to storage server at datarichml.com
+2024-08-27 22:05:55,359 - INFO - Storage server SSH connection closed
+2024-08-27 22:05:55,359 - INFO - MySQL connection is closed

@@ -1,7 +1,7 @@
-<div class="max-w-7xl mx-auto px-6">
+<div>
     <h1 class="font-semibold text-lg text-gray-800 mb-6 leading-4">Add New Video</h1>
 
-    <form wire:submit.prevent="save" class="bg-white shadow-xl rounded-lg p-6 space-y-6" enctype="multipart/form-data">
+    <form wire:submit.prevent="save" enctype="multipart/form-data">
         <div class="grid grid-cols-1 gap-6">
 
             <div>
@@ -45,7 +45,7 @@
         </div>
 
         <div class="flex justify-end">
-            <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-secondary hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <button type="submit" class="inline-flex mt-4 items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-secondary hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Upload Video
             </button>
         </div>
