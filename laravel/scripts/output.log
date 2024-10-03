@@ -1,0 +1,1910 @@
+Server Id: 59
+Successfully connected to the database
+Server Instance: {'id': 59, 'name': 'test', 'ip': '1.1.1.1', 'ssh_port': 22, 'username': 'root', 'domain': 'test.com', 'status': 'pending', 'type': 'encoder', 'limit': 22, 'total_videos': 0, 'created_at': datetime.datetime(2024, 8, 19, 17, 4, 7), 'updated_at': datetime.datetime(2024, 8, 19, 17, 4, 7)}
+Updated status to 1
+Updated status to 2
+Updated status to 3
+Updated status to 4
+Updated status to 5
+Updated status to 6
+Updated status to 7
+Updated status to 8
+Updated status to 9
+Updated status to 10
+MySQL connection is closed
+2024-08-20 00:40:07,833 - INFO - Server Id: 72
+2024-08-20 00:40:08,022 - INFO - Successfully connected to the database
+2024-08-20 00:40:09,128 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 00:40:10,406 - INFO - Authentication (publickey) successful!
+2024-08-20 00:40:10,408 - INFO - Executing command: sudo apt update
+2024-08-20 00:40:13,208 - ERROR - Error executing command 'sudo apt update': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 00:40:13,210 - INFO - Executing command: sudo apt install -y nginx
+2024-08-20 00:40:14,473 - ERROR - Error executing command 'sudo apt install -y nginx': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 00:40:14,476 - INFO - Executing command: sudo systemctl enable nginx
+2024-08-20 00:40:15,903 - ERROR - Error executing command 'sudo systemctl enable nginx': Synchronizing state of nginx.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable nginx
+
+2024-08-20 00:40:15,906 - INFO - Executing command: sudo systemctl restart nginx
+2024-08-20 00:40:16,797 - INFO - Executing command: sudo ufw allow "Nginx Full"
+2024-08-20 00:40:17,714 - INFO - Executing command: sudo ufw reload
+2024-08-20 00:40:18,552 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 00:40:21,545 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 00:40:21,549 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 00:40:22,829 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 00:40:22,833 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-20 00:40:23,666 - INFO - Executing command: grep -q "add_header Access-Control-Allow-Origin" /etc/nginx/nginx.conf || sudo sed -i "/^http {/a \ \ \ \ \tadd_header Access-Control-Allow-Origin *;" /etc/nginx/nginx.conf
+2024-08-20 00:40:24,423 - INFO - Executing command: sudo service nginx restart
+2024-08-20 00:40:25,306 - INFO - SSH connection closed
+2024-08-20 00:40:25,307 - INFO - MySQL connection is closed
+2024-08-20 09:59:08,746 - INFO - Server Id: 73
+2024-08-20 09:59:08,906 - INFO - Successfully connected to the database
+2024-08-20 10:00:29,210 - INFO - Server Id: 74
+2024-08-20 10:00:29,345 - INFO - Successfully connected to the database
+2024-08-20 10:00:30,515 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 10:00:32,059 - INFO - Authentication (publickey) successful!
+2024-08-20 10:00:32,066 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 10:00:35,369 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 10:00:35,369 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 10:00:36,781 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 10:00:36,781 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-20 10:00:37,696 - INFO - SSH connection closed
+2024-08-20 10:00:37,696 - INFO - MySQL connection is closed
+2024-08-20 11:10:00,955 - INFO - Server Id: 75
+2024-08-20 11:10:01,141 - INFO - Successfully connected to the database
+2024-08-20 15:40:19,475 - INFO - Server Id: 76
+2024-08-20 15:40:19,675 - INFO - Successfully connected to the database
+2024-08-20 15:40:20,944 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 15:40:22,427 - INFO - Authentication (publickey) successful!
+2024-08-20 15:40:22,434 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 15:40:27,627 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:40:27,627 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 15:40:29,015 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:40:29,024 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-20 15:40:29,814 - INFO - SSH connection closed
+2024-08-20 15:40:29,814 - INFO - MySQL connection is closed
+2024-08-20 15:43:26,048 - INFO - Server Id: 77
+2024-08-20 15:43:26,250 - INFO - Successfully connected to the database
+2024-08-20 15:43:27,860 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 15:43:29,401 - INFO - Authentication (publickey) successful!
+2024-08-20 15:43:29,409 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 15:43:32,718 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:43:32,719 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 15:43:34,191 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:43:34,191 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-20 15:43:35,170 - INFO - SSH connection closed
+2024-08-20 15:43:35,170 - INFO - MySQL connection is closed
+2024-08-20 15:44:33,133 - INFO - Server Id: 78
+2024-08-20 15:44:33,268 - INFO - Successfully connected to the database
+2024-08-20 15:44:34,680 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 15:44:36,411 - INFO - Authentication (publickey) successful!
+2024-08-20 15:44:36,421 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 15:44:39,857 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:44:39,861 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 15:44:41,480 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:44:41,488 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-20 15:44:42,590 - INFO - SSH connection closed
+2024-08-20 15:44:42,590 - INFO - MySQL connection is closed
+2024-08-20 15:46:23,276 - INFO - Server Id: 79
+2024-08-20 15:46:23,485 - INFO - Successfully connected to the database
+2024-08-20 15:46:25,109 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 15:46:26,671 - INFO - Authentication (publickey) successful!
+2024-08-20 15:46:26,677 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 15:46:30,017 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:46:30,022 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 15:46:31,446 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:46:31,451 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-20 15:46:32,426 - INFO - SSH connection closed
+2024-08-20 15:46:32,427 - INFO - MySQL connection is closed
+2024-08-20 15:46:48,677 - INFO - Server Id: 80
+2024-08-20 15:46:48,845 - INFO - Successfully connected to the database
+2024-08-20 15:46:52,826 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 15:46:54,670 - INFO - Authentication (publickey) successful!
+2024-08-20 15:46:54,677 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 15:46:58,019 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:46:58,021 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 15:46:59,407 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 15:46:59,413 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-20 15:47:00,327 - INFO - SSH connection closed
+2024-08-20 15:47:00,327 - INFO - MySQL connection is closed
+2024-08-20 16:09:30,963 - INFO - Server Id: 81
+2024-08-20 16:09:31,143 - INFO - Successfully connected to the database
+2024-08-20 18:39:27,341 - INFO - Server Id: 1
+2024-08-20 18:39:27,522 - INFO - Successfully connected to the database
+2024-08-20 18:39:28,714 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 18:39:30,210 - INFO - Authentication (publickey) successful!
+2024-08-20 18:39:30,210 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 18:40:04,848 - INFO - Server Id: 2
+2024-08-20 18:40:04,995 - INFO - Successfully connected to the database
+2024-08-20 18:40:06,144 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-20 18:40:07,682 - INFO - Authentication (publickey) successful!
+2024-08-20 18:40:07,684 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-20 18:40:13,542 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 18:40:13,542 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 18:40:15,013 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-20 18:40:15,013 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-20 18:40:15,883 - INFO - SSH connection closed
+2024-08-20 18:40:15,883 - INFO - MySQL connection is closed
+2024-08-20 18:40:16,191 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+
+2024-08-20 18:40:16,199 - INFO - Executing command: sudo apt install -y nginx
+2024-08-20 18:40:26,714 - ERROR - Error executing command 'sudo apt install -y nginx': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+
+2024-08-20 18:40:26,714 - INFO - Executing command: sudo systemctl enable nginx
+2024-08-20 18:40:28,364 - ERROR - Error executing command 'sudo systemctl enable nginx': Synchronizing state of nginx.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable nginx
+
+2024-08-20 18:40:28,364 - INFO - Executing command: sudo systemctl restart nginx
+2024-08-20 18:40:29,281 - INFO - Executing command: sudo ufw allow "Nginx Full"
+2024-08-20 18:40:30,371 - INFO - Executing command: sudo ufw reload
+2024-08-20 18:40:31,362 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-20 18:41:09,234 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+
+2024-08-20 18:41:09,252 - INFO - Executing command: grep -q "add_header Access-Control-Allow-Origin" /etc/nginx/nginx.conf || sudo sed -i "/^http {/a \ \ \ \ \tadd_header Access-Control-Allow-Origin *;" /etc/nginx/nginx.conf
+2024-08-20 18:41:10,174 - INFO - Executing command: sudo service nginx restart
+2024-08-20 18:41:11,137 - INFO - SSH connection closed
+2024-08-20 18:41:11,138 - INFO - MySQL connection is closed
+2024-08-22 09:23:14,801 - INFO - Server Id: 2
+2024-08-22 09:23:14,912 - INFO - Successfully connected to the database
+2024-08-22 09:23:16,043 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-22 09:23:17,582 - INFO - Authentication (publickey) successful!
+2024-08-22 09:23:17,590 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-22 09:23:31,346 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+
+2024-08-22 09:23:31,354 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-22 09:23:32,904 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-22 09:23:32,912 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-22 09:23:33,870 - INFO - SSH connection closed
+2024-08-22 09:23:33,873 - INFO - MySQL connection is closed
+2024-08-22 09:27:34,711 - INFO - Server Id: 3
+2024-08-22 09:27:35,006 - INFO - Successfully connected to the database
+2024-08-22 09:27:36,301 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-22 09:27:37,791 - INFO - Authentication (publickey) successful!
+2024-08-22 09:27:37,791 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-22 09:27:50,790 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+
+2024-08-22 09:27:50,798 - INFO - Executing command: sudo apt install -y nginx
+2024-08-22 09:27:52,202 - ERROR - Error executing command 'sudo apt install -y nginx': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-22 09:27:52,211 - INFO - Executing command: sudo systemctl enable nginx
+2024-08-22 09:27:53,943 - ERROR - Error executing command 'sudo systemctl enable nginx': Synchronizing state of nginx.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable nginx
+
+2024-08-22 09:27:53,952 - INFO - Executing command: sudo systemctl restart nginx
+2024-08-22 09:27:54,810 - INFO - Executing command: sudo ufw allow "Nginx Full"
+2024-08-22 09:27:55,904 - INFO - Executing command: sudo ufw reload
+2024-08-22 09:27:56,800 - INFO - Executing command: grep -q "add_header Access-Control-Allow-Origin" /etc/nginx/nginx.conf || sudo sed -i "/^http {/a \ \ \ \ \tadd_header Access-Control-Allow-Origin *;" /etc/nginx/nginx.conf
+2024-08-22 09:27:57,653 - INFO - Executing command: sudo service nginx restart
+2024-08-22 09:27:58,553 - INFO - SSH connection closed
+2024-08-22 09:27:58,553 - INFO - MySQL connection is closed
+2024-08-22 09:37:20,032 - INFO - Server Id: 1
+2024-08-22 09:37:20,244 - INFO - Successfully connected to the database
+2024-08-22 09:37:21,342 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-22 09:37:22,811 - INFO - Authentication (publickey) successful!
+2024-08-22 09:37:22,811 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-22 09:37:26,493 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-22 09:37:26,493 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-22 09:37:28,044 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-22 09:37:28,132 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-22 09:37:28,962 - INFO - SSH connection closed
+2024-08-22 09:37:28,962 - INFO - MySQL connection is closed
+2024-08-22 09:38:43,662 - INFO - Server Id: 2
+2024-08-22 09:38:43,824 - INFO - Successfully connected to the database
+2024-08-22 09:38:44,982 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-22 09:38:46,393 - INFO - Authentication (publickey) successful!
+2024-08-22 09:38:46,406 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-22 09:38:49,922 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-22 09:38:49,922 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-22 09:38:51,231 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-22 09:38:51,240 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-22 09:38:52,123 - INFO - SSH connection closed
+2024-08-22 09:38:52,123 - INFO - MySQL connection is closed
+2024-08-22 09:39:09,536 - INFO - Server Id: 3
+2024-08-22 09:39:09,634 - INFO - Successfully connected to the database
+2024-08-22 09:39:10,844 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-22 09:39:12,382 - INFO - Authentication (publickey) successful!
+2024-08-22 09:39:12,382 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-22 09:39:15,694 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-22 09:39:15,694 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-22 09:39:17,182 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-22 09:39:17,190 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-22 09:39:18,088 - INFO - SSH connection closed
+2024-08-22 09:39:18,088 - INFO - MySQL connection is closed
+2024-08-23 15:50:57,806 - INFO - Video Id: Zy0YX4nkuO
+2024-08-23 15:50:58,044 - INFO - Successfully connected to the database
+2024-08-23 15:50:58,044 - INFO - MySQL connection is closed
+2024-08-23 15:55:31,613 - INFO - Video Id: Zy0YX4FnkuO
+2024-08-23 15:55:31,754 - INFO - Successfully connected to the database
+2024-08-23 15:55:31,754 - ERROR - Database error: 1054 (42S22): Unknown column 'ip' in 'field list'
+2024-08-23 15:55:31,754 - INFO - MySQL connection is closed
+2024-08-23 15:55:47,335 - INFO - Video Id: Zy0YX4FnkuO
+2024-08-23 15:55:47,413 - INFO - Successfully connected to the database
+2024-08-23 15:55:47,413 - ERROR - Database error: 1054 (42S22): Unknown column 'ip' in 'field list'
+2024-08-23 15:55:47,413 - INFO - MySQL connection is closed
+2024-08-23 15:56:30,322 - INFO - Video Id: Zy0YX4FnkuO
+2024-08-23 15:56:30,400 - INFO - Successfully connected to the database
+2024-08-23 15:56:30,400 - ERROR - Database error: 1054 (42S22): Unknown column 'ip' in 'field list'
+2024-08-23 15:56:30,400 - INFO - MySQL connection is closed
+2024-08-23 15:59:34,669 - INFO - Video Id: 5p652RWGfi3
+2024-08-23 15:59:34,906 - INFO - Successfully connected to the database
+2024-08-23 15:59:34,906 - ERROR - Database error: 1054 (42S22): Unknown column 'ip' in 'field list'
+2024-08-23 15:59:34,906 - INFO - MySQL connection is closed
+2024-08-23 16:00:07,813 - INFO - Video Id: 8Pv4kGGat7H
+2024-08-23 16:00:07,933 - INFO - Successfully connected to the database
+2024-08-23 16:00:07,933 - ERROR - Database error: 1054 (42S22): Unknown column 'ip' in 'field list'
+2024-08-23 16:00:07,933 - INFO - MySQL connection is closed
+2024-08-23 16:12:02,770 - INFO - Video Id: 9h3wnCtyqfU
+2024-08-23 16:12:03,206 - INFO - Successfully connected to the database
+2024-08-23 16:12:03,207 - WARNING - No server found with ID: 9h3wnCtyqfU
+2024-08-23 16:12:03,207 - INFO - MySQL connection is closed
+2024-08-23 16:14:05,752 - INFO - Server Id: 1
+2024-08-23 16:14:05,947 - INFO - Successfully connected to the database
+2024-08-23 16:14:07,220 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-23 16:14:08,912 - INFO - Authentication (publickey) successful!
+2024-08-23 16:14:08,938 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-23 16:14:15,915 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-23 16:14:15,919 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-23 16:14:17,383 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-23 16:14:17,386 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-23 16:14:18,417 - INFO - SSH connection closed
+2024-08-23 16:14:18,418 - INFO - MySQL connection is closed
+2024-08-23 16:15:24,169 - INFO - Video Id: n6Oob8tUPhi
+2024-08-23 16:15:24,363 - INFO - Successfully connected to the database
+2024-08-23 16:15:25,798 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-23 16:15:27,466 - INFO - Authentication (publickey) successful!
+2024-08-23 16:15:27,467 - INFO - SSH connection closed
+2024-08-23 16:15:27,468 - INFO - MySQL connection is closed
+2024-08-24 09:40:38,403 - INFO - Server Id: 1
+2024-08-24 09:40:38,593 - INFO - Successfully connected to the database
+2024-08-24 09:40:39,860 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 09:40:41,393 - INFO - Authentication (publickey) successful!
+2024-08-24 09:40:41,393 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-24 09:40:58,088 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+
+2024-08-24 09:40:58,090 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-24 09:40:59,351 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-24 09:40:59,351 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-24 09:41:00,358 - INFO - SSH connection closed
+2024-08-24 09:41:00,358 - INFO - MySQL connection is closed
+2024-08-24 09:41:05,948 - INFO - Server Id: 2
+2024-08-24 09:41:06,080 - INFO - Successfully connected to the database
+2024-08-24 09:41:07,198 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 09:41:08,734 - INFO - Authentication (publickey) successful!
+2024-08-24 09:41:08,742 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-24 09:41:28,089 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+
+2024-08-24 09:41:28,089 - INFO - Executing command: sudo apt install -y nginx
+2024-08-24 09:41:29,550 - ERROR - Error executing command 'sudo apt install -y nginx': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-24 09:41:29,560 - INFO - Executing command: sudo systemctl enable nginx
+2024-08-24 09:41:31,468 - ERROR - Error executing command 'sudo systemctl enable nginx': Synchronizing state of nginx.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable nginx
+
+2024-08-24 09:41:31,471 - INFO - Executing command: sudo systemctl restart nginx
+2024-08-24 09:41:32,418 - INFO - Executing command: sudo ufw allow "Nginx Full"
+2024-08-24 09:41:33,538 - INFO - Executing command: sudo ufw reload
+2024-08-24 09:41:34,558 - INFO - Executing command: grep -q "add_header Access-Control-Allow-Origin" /etc/nginx/nginx.conf || sudo sed -i "/^http {/a \ \ \ \ \tadd_header Access-Control-Allow-Origin *;" /etc/nginx/nginx.conf
+2024-08-24 09:41:35,459 - INFO - Executing command: sudo service nginx restart
+2024-08-24 09:41:36,426 - INFO - SSH connection closed
+2024-08-24 09:41:36,426 - INFO - MySQL connection is closed
+2024-08-24 09:42:37,877 - INFO - Video Id: aQZLvDgBkgp
+2024-08-24 09:42:38,090 - INFO - Successfully connected to the database
+2024-08-24 09:42:38,090 - INFO - MySQL connection is closed
+2024-08-24 09:45:07,245 - INFO - Video Id: mqJ76rK6LV9
+2024-08-24 09:45:07,628 - INFO - Successfully connected to the database
+2024-08-24 09:45:07,628 - INFO - MySQL connection is closed
+2024-08-24 11:56:23,438 - INFO - Video Id: lvTmqMajhMH
+2024-08-24 11:56:23,531 - INFO - Successfully connected to the database
+2024-08-24 11:56:23,531 - INFO - Database connection established.
+2024-08-24 11:56:23,531 - ERROR - Error: 'userid'
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 291, in main
+    encoding_server = get_encoding_server(cursor=cursor, user_id=video['userid'])
+                                                                 ~~~~~^^^^^^^^^^
+KeyError: 'userid'
+2024-08-24 11:56:23,531 - INFO - MySQL connection is closed
+2024-08-24 11:57:31,976 - INFO - Video Id: 3Awd1sAnXwt
+2024-08-24 11:57:32,151 - INFO - Successfully connected to the database
+2024-08-24 11:57:32,151 - INFO - Database connection established.
+2024-08-24 11:57:32,151 - WARNING - No encoding server available for user_id: 1
+2024-08-24 11:57:32,151 - INFO - MySQL connection is closed
+2024-08-24 11:59:14,405 - INFO - Video Id: OfaXtwnHQSq
+2024-08-24 11:59:14,629 - INFO - Successfully connected to the database
+2024-08-24 11:59:14,629 - INFO - Database connection established.
+2024-08-24 11:59:14,629 - WARNING - No encoding server available for user_id: 1
+2024-08-24 11:59:14,629 - INFO - MySQL connection is closed
+2024-08-24 12:00:28,344 - INFO - Video Id: aIH6bx4Ob7f
+2024-08-24 12:00:28,499 - INFO - Successfully connected to the database
+2024-08-24 12:00:28,500 - INFO - Database connection established.
+2024-08-24 12:00:29,846 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 12:00:31,114 - INFO - Authentication (publickey) successful!
+2024-08-24 12:00:31,120 - INFO - SSH connection closed
+2024-08-24 12:00:31,120 - ERROR - Error: 'id'
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 299, in main
+    process_video(client, video, encoding_server, cursor, connection)
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 145, in process_video
+    video_key = video['id']
+                ~~~~~^^^^^^
+KeyError: 'id'
+2024-08-24 12:00:31,124 - INFO - MySQL connection is closed
+2024-08-24 12:04:58,290 - INFO - Video Id: fSIoUuBpeH1
+2024-08-24 12:04:58,553 - INFO - Successfully connected to the database
+2024-08-24 12:04:58,553 - INFO - Database connection established.
+2024-08-24 12:05:00,612 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 12:05:01,867 - INFO - Authentication (publickey) successful!
+2024-08-24 12:05:01,871 - INFO - SSH connection closed
+2024-08-24 12:05:01,872 - ERROR - Error: cannot access local variable 'input_file' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 299, in main
+    process_video(client, video, encoding_server, cursor, connection)
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 146, in process_video
+    video_name = f'{video_key}{os.path.splitext(input_file)[1]}'
+                                                ^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'input_file' where it is not associated with a value
+2024-08-24 12:05:01,876 - INFO - MySQL connection is closed
+2024-08-24 12:05:58,075 - INFO - Video Id: Wr3IYVBS5tg
+2024-08-24 12:05:58,301 - INFO - Successfully connected to the database
+2024-08-24 12:05:58,301 - INFO - Database connection established.
+2024-08-24 12:05:59,703 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 12:06:00,946 - INFO - Authentication (publickey) successful!
+2024-08-24 12:06:01,931 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-24 12:06:38,010 - INFO - [chan 0] sftp session closed.
+2024-08-24 12:06:51,064 - INFO - SSH connection closed
+2024-08-24 12:06:51,064 - ERROR - Error: Socket is closed
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 299, in main
+    process_video(client, video, encoding_server, cursor, connection)
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 158, in process_video
+    process_quality(client, sftp, video_name, quality, video_key, total_duration, hls_video_dir, domains, cursor, connection, video_id)
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 178, in process_quality
+    rename_ts_files_to_html(sftp, quality_dir)
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 203, in rename_ts_files_to_html
+    ts_files = sftp.listdir_attr(quality_dir)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp_client.py", line 239, in listdir_attr
+    t, msg = self._request(CMD_OPENDIR, path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp_client.py", line 856, in _request
+    num = self._async_request(type(None), t, *args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp_client.py", line 881, in _async_request
+    self._send_packet(t, msg)
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp.py", line 209, in _send_packet
+    self._write_all(out)
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp.py", line 173, in _write_all
+    n = self.sock.send(out)
+        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\channel.py", line 799, in send
+    return self._send(s, m)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\channel.py", line 1196, in _send
+    raise socket.error("Socket is closed")
+OSError: Socket is closed
+2024-08-24 12:06:51,158 - INFO - MySQL connection is closed
+2024-08-24 12:12:11,389 - INFO - Video Id: GjnLsJTjvR3
+2024-08-24 12:12:11,531 - INFO - Successfully connected to the database
+2024-08-24 12:12:11,532 - INFO - Database connection established.
+2024-08-24 12:12:12,575 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 12:12:13,829 - INFO - Authentication (publickey) successful!
+2024-08-24 12:12:15,074 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-24 12:12:51,530 - INFO - [chan 0] sftp session closed.
+2024-08-24 12:13:01,471 - INFO - Video Id: FjjadpyecWI
+2024-08-24 12:13:01,620 - INFO - Successfully connected to the database
+2024-08-24 12:13:01,620 - INFO - Database connection established.
+2024-08-24 12:13:02,695 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 12:13:03,999 - INFO - Authentication (publickey) successful!
+2024-08-24 12:13:04,998 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-24 12:13:42,140 - INFO - [chan 0] sftp session closed.
+2024-08-24 12:13:53,492 - INFO - SSH connection closed
+2024-08-24 12:13:53,493 - ERROR - Error: Socket is closed
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 299, in main
+    process_video(client, video, encoding_server, cursor, connection)
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 158, in process_video
+    process_quality(client, sftp, video_name, quality, video_key, total_duration, hls_video_dir, domains, cursor, connection, video_id)
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 187, in process_quality
+    rename_ts_files_to_html(sftp, quality_dir)
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 171, in rename_ts_files_to_html
+    ts_files = sftp.listdir_attr(quality_dir)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp_client.py", line 239, in listdir_attr
+    t, msg = self._request(CMD_OPENDIR, path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp_client.py", line 856, in _request
+    num = self._async_request(type(None), t, *args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp_client.py", line 881, in _async_request
+    self._send_packet(t, msg)
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp.py", line 209, in _send_packet
+    self._write_all(out)
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp.py", line 173, in _write_all
+    n = self.sock.send(out)
+        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\channel.py", line 799, in send
+    return self._send(s, m)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\channel.py", line 1196, in _send
+    raise socket.error("Socket is closed")
+OSError: Socket is closed
+2024-08-24 12:13:53,501 - INFO - MySQL connection is closed
+2024-08-24 12:19:53,999 - INFO - Video Id: UxbxUn3zuss
+2024-08-24 12:19:54,724 - INFO - Successfully connected to the database
+2024-08-24 12:19:54,724 - INFO - Database connection established.
+2024-08-24 12:19:55,941 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 12:19:57,218 - INFO - Authentication (publickey) successful!
+2024-08-24 12:19:58,483 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-24 12:20:33,914 - INFO - [chan 0] sftp session closed.
+2024-08-24 12:20:45,224 - INFO - SSH connection closed
+2024-08-24 12:20:45,225 - ERROR - Error: Socket is closed
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 288, in main
+    process_video(client, video, encoding_server, cursor, connection)
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 185, in process_video
+    ts_files = sftp.listdir_attr(quality_dir)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp_client.py", line 239, in listdir_attr
+    t, msg = self._request(CMD_OPENDIR, path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp_client.py", line 856, in _request
+    num = self._async_request(type(None), t, *args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp_client.py", line 881, in _async_request
+    self._send_packet(t, msg)
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp.py", line 209, in _send_packet
+    self._write_all(out)
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp.py", line 173, in _write_all
+    n = self.sock.send(out)
+        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\channel.py", line 799, in send
+    return self._send(s, m)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\channel.py", line 1196, in _send
+    raise socket.error("Socket is closed")
+OSError: Socket is closed
+2024-08-24 12:20:45,300 - INFO - MySQL connection is closed
+2024-08-24 12:32:40,039 - INFO - Video Id: IKr6vkq6wwD
+2024-08-24 12:32:40,187 - INFO - Successfully connected to the database
+2024-08-24 12:32:41,447 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 12:32:42,695 - INFO - Authentication (publickey) successful!
+2024-08-24 12:32:43,951 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-24 12:33:20,334 - INFO - [chan 0] sftp session closed.
+2024-08-24 12:33:31,839 - ERROR - Error: Socket is closed
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 173, in <module>
+    ts_files = sftp.listdir_attr(quality_dir)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp_client.py", line 239, in listdir_attr
+    t, msg = self._request(CMD_OPENDIR, path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp_client.py", line 856, in _request
+    num = self._async_request(type(None), t, *args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp_client.py", line 881, in _async_request
+    self._send_packet(t, msg)
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp.py", line 209, in _send_packet
+    self._write_all(out)
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp.py", line 173, in _write_all
+    n = self.sock.send(out)
+        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\channel.py", line 799, in send
+    return self._send(s, m)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\channel.py", line 1196, in _send
+    raise socket.error("Socket is closed")
+OSError: Socket is closed
+2024-08-24 12:33:31,843 - INFO - MySQL connection is closed
+2024-08-24 12:39:26,859 - INFO - Video Id: FFNrAyjmpTb
+2024-08-24 12:39:27,045 - INFO - Successfully connected to the database
+2024-08-24 12:39:28,292 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 12:39:29,558 - INFO - Authentication (publickey) successful!
+2024-08-24 12:39:30,786 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-24 12:40:06,858 - INFO - [chan 0] sftp session closed.
+2024-08-24 12:40:18,860 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-24 12:40:36,320 - INFO - [chan 4] sftp session closed.
+2024-08-24 12:40:49,522 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-24 12:41:06,020 - INFO - [chan 7] sftp session closed.
+2024-08-24 12:41:20,234 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-24 12:41:36,685 - INFO - [chan 10] sftp session closed.
+2024-08-24 12:41:36,687 - ERROR - Error: Socket is closed
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 201, in <module>
+    with sftp.open(filename=master_m3u8, mode='w+') as master:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp_client.py", line 372, in open
+    t, msg = self._request(CMD_OPEN, filename, imode, attrblock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp_client.py", line 856, in _request
+    num = self._async_request(type(None), t, *args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp_client.py", line 881, in _async_request
+    self._send_packet(t, msg)
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp.py", line 209, in _send_packet
+    self._write_all(out)
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp.py", line 173, in _write_all
+    n = self.sock.send(out)
+        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\channel.py", line 799, in send
+    return self._send(s, m)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\channel.py", line 1196, in _send
+    raise socket.error("Socket is closed")
+OSError: Socket is closed
+2024-08-24 12:41:36,695 - INFO - MySQL connection is closed
+2024-08-24 12:43:13,520 - INFO - Video Id: RhMu95TfFhY
+2024-08-24 12:43:13,665 - INFO - Successfully connected to the database
+2024-08-24 12:43:14,680 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 12:43:15,930 - INFO - Authentication (publickey) successful!
+2024-08-24 12:43:17,164 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-24 12:43:53,622 - INFO - [chan 0] sftp session closed.
+2024-08-24 12:44:05,612 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-24 12:44:24,224 - INFO - [chan 4] sftp session closed.
+2024-08-24 12:44:37,518 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-24 12:44:56,087 - INFO - [chan 7] sftp session closed.
+2024-08-24 12:45:10,289 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-24 12:45:28,870 - INFO - [chan 10] sftp session closed.
+2024-08-24 12:45:29,947 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 12:45:31,194 - INFO - Authentication (publickey) successful!
+2024-08-24 12:45:33,062 - INFO - [chan 1] Opened sftp connection (server version 3)
+2024-08-24 12:45:33,759 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-24 12:45:34,711 - INFO - [chan 1] sftp session closed.
+2024-08-24 12:45:34,712 - INFO - Storage server SSH connection closed
+2024-08-24 12:45:34,713 - ERROR - Error: [WinError 3] The system cannot find the path specified: '/var/www/html/streams/RhMu95TfFhY/master.m3u8'
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 229, in <module>
+    sftp_storage.put(localpath=local_path, remotepath=remote_path)
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp_client.py", line 757, in put
+    file_size = os.stat(localpath).st_size
+                ^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: '/var/www/html/streams/RhMu95TfFhY/master.m3u8'
+2024-08-24 12:45:34,717 - INFO - MySQL connection is closed
+2024-08-24 12:49:06,346 - INFO - Video Id: bik5sfa66C0
+2024-08-24 12:49:06,547 - INFO - Successfully connected to the database
+2024-08-24 12:49:07,798 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 12:49:09,054 - INFO - Authentication (publickey) successful!
+2024-08-24 12:49:10,332 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-24 12:49:47,368 - INFO - [chan 0] sftp session closed.
+2024-08-24 12:49:59,504 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-24 12:50:16,016 - INFO - [chan 4] sftp session closed.
+2024-08-24 12:50:29,467 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-24 12:50:45,944 - INFO - [chan 7] sftp session closed.
+2024-08-24 12:51:00,139 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-24 12:51:17,119 - INFO - [chan 10] sftp session closed.
+2024-08-24 12:51:18,062 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-24 12:51:20,556 - INFO - [chan 11] sftp session closed.
+2024-08-24 12:51:21,690 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 12:51:22,951 - INFO - Authentication (publickey) successful!
+2024-08-24 12:51:25,135 - INFO - [chan 1] Opened sftp connection (server version 3)
+2024-08-24 12:51:25,908 - INFO - [chan 12] Opened sftp connection (server version 3)
+2024-08-24 12:51:27,034 - INFO - [chan 1] sftp session closed.
+2024-08-24 12:51:27,036 - INFO - Storage server SSH connection closed
+2024-08-24 12:51:27,039 - ERROR - Error: [WinError 3] The system cannot find the path specified: '/var/www/html/streams/bik5sfa66C0/master.m3u8'
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 230, in <module>
+    sftp_storage.put(localpath=local_path, remotepath=remote_path)
+  File "C:\Users\Syed Aalehuzoor\AppData\Local\Programs\Python\Python312\Lib\site-packages\paramiko\sftp_client.py", line 757, in put
+    file_size = os.stat(localpath).st_size
+                ^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: '/var/www/html/streams/bik5sfa66C0/master.m3u8'
+2024-08-24 12:51:27,052 - INFO - MySQL connection is closed
+2024-08-24 14:50:47,170 - INFO - Server Id: 3
+2024-08-24 14:50:47,393 - INFO - Successfully connected to the database
+2024-08-24 14:50:48,682 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 14:50:50,208 - INFO - Authentication (publickey) successful!
+2024-08-24 14:50:50,208 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-24 14:50:55,672 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-24 14:50:55,672 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-24 14:50:57,100 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-24 14:50:57,100 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-24 14:50:59,118 - INFO - [chan 3] Opened sftp connection (server version 3)
+2024-08-24 14:50:59,368 - INFO - [chan 3] sftp session closed.
+2024-08-24 14:50:59,368 - ERROR - Configuration failed: [Errno 2] No such file
+2024-08-24 14:50:59,368 - INFO - SSH connection closed
+2024-08-24 14:50:59,368 - INFO - MySQL connection is closed
+2024-08-24 14:53:08,569 - INFO - Server Id: 4
+2024-08-24 14:53:08,735 - INFO - Successfully connected to the database
+2024-08-24 14:53:09,891 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 14:53:11,427 - INFO - Authentication (publickey) successful!
+2024-08-24 14:53:11,427 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-24 14:53:14,717 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-24 14:53:14,717 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-24 14:53:16,061 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-24 14:53:16,061 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-24 14:53:17,064 - INFO - SSH connection closed
+2024-08-24 14:53:17,064 - INFO - MySQL connection is closed
+2024-08-24 14:58:01,181 - INFO - Video Id: xbTMhqcAwZO
+2024-08-24 14:58:01,419 - INFO - Successfully connected to the database
+2024-08-24 14:58:01,419 - WARNING - No server found with ID: 1
+2024-08-24 14:58:01,419 - ERROR - Error: No server found with ID: 1
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 80, in <module>
+    raise Exception(f"No server found with ID: {video['serverid']}")
+Exception: No server found with ID: 1
+2024-08-24 14:58:01,419 - INFO - MySQL connection is closed
+2024-08-24 15:00:50,952 - INFO - Video Id: Vl0zbkpSSgR
+2024-08-24 15:00:51,242 - INFO - Successfully connected to the database
+2024-08-24 15:00:51,252 - ERROR - Error: No encoder servers available
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 107, in <module>
+    raise Exception("No encoder servers available")
+Exception: No encoder servers available
+2024-08-24 15:00:51,252 - INFO - MySQL connection is closed
+2024-08-24 15:03:05,132 - INFO - Video Id: OkLLH7WSvI7
+2024-08-24 15:03:05,321 - INFO - Successfully connected to the database
+2024-08-24 15:03:05,321 - ERROR - Error: No encoder servers available
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 107, in <module>
+    raise Exception("No encoder servers available")
+Exception: No encoder servers available
+2024-08-24 15:03:05,321 - INFO - MySQL connection is closed
+2024-08-24 15:04:05,881 - INFO - Video Id: RNl63oy4ht1
+2024-08-24 15:04:06,012 - INFO - Successfully connected to the database
+2024-08-24 15:04:06,015 - ERROR - Error: No encoder servers available
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 107, in <module>
+    raise Exception("No encoder servers available")
+Exception: No encoder servers available
+2024-08-24 15:04:06,016 - INFO - MySQL connection is closed
+2024-08-24 15:05:21,475 - INFO - Video Id: 2IkiAf4Ouho
+2024-08-24 15:05:21,601 - INFO - Successfully connected to the database
+2024-08-24 15:05:22,782 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 15:05:24,322 - INFO - Authentication (publickey) successful!
+2024-08-24 15:05:25,689 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-24 15:06:06,900 - INFO - [chan 0] sftp session closed.
+2024-08-24 15:06:19,720 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-24 15:06:39,689 - INFO - [chan 4] sftp session closed.
+2024-08-24 15:06:53,450 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-24 15:07:13,071 - INFO - [chan 7] sftp session closed.
+2024-08-24 15:07:27,734 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-24 15:07:46,666 - INFO - [chan 10] sftp session closed.
+2024-08-24 15:07:47,888 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-24 15:07:50,379 - INFO - [chan 11] sftp session closed.
+2024-08-24 15:07:52,497 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 15:07:53,938 - INFO - Authentication (publickey) successful!
+2024-08-24 15:07:53,938 - INFO - Transferred video 2IkiAf4Ouho to storage server at test.com
+2024-08-24 15:07:53,938 - INFO - Storage server SSH connection closed
+2024-08-24 15:07:53,938 - INFO - MySQL connection is closed
+2024-08-24 15:12:29,727 - INFO - Video Id: s40wccbPh6M
+2024-08-24 15:12:29,921 - INFO - Successfully connected to the database
+2024-08-24 15:12:31,296 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 15:12:32,872 - INFO - Authentication (publickey) successful!
+2024-08-24 15:12:34,306 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-24 15:13:15,864 - INFO - [chan 0] sftp session closed.
+2024-08-24 15:13:28,474 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-24 15:13:48,448 - INFO - [chan 4] sftp session closed.
+2024-08-24 15:14:02,336 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-24 15:14:22,967 - INFO - [chan 7] sftp session closed.
+2024-08-24 15:14:37,802 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-24 15:14:58,183 - INFO - [chan 10] sftp session closed.
+2024-08-24 15:14:59,343 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-24 15:15:02,073 - INFO - [chan 11] sftp session closed.
+2024-08-24 15:15:04,223 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 15:15:05,762 - INFO - Authentication (publickey) successful!
+2024-08-24 15:15:05,762 - INFO - Transferred video s40wccbPh6M to storage server at test.com
+2024-08-24 15:15:05,762 - INFO - Storage server SSH connection closed
+2024-08-24 15:15:05,763 - INFO - MySQL connection is closed
+2024-08-24 22:43:13,140 - INFO - Server Id: 5
+2024-08-24 22:43:13,301 - INFO - Successfully connected to the database
+2024-08-24 22:43:14,537 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 22:43:16,279 - INFO - Authentication (publickey) successful!
+2024-08-24 22:43:16,279 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-24 22:43:31,420 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+
+2024-08-24 22:43:31,467 - INFO - Executing command: sudo apt install -y nginx
+2024-08-24 22:43:32,966 - ERROR - Error executing command 'sudo apt install -y nginx': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-24 22:43:32,966 - INFO - Executing command: sudo systemctl enable nginx
+2024-08-24 22:43:34,813 - ERROR - Error executing command 'sudo systemctl enable nginx': Synchronizing state of nginx.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable nginx
+
+2024-08-24 22:43:34,813 - INFO - Executing command: sudo systemctl restart nginx
+2024-08-24 22:43:36,052 - INFO - Executing command: sudo ufw allow "Nginx Full"
+2024-08-24 22:43:37,477 - INFO - Executing command: sudo ufw reload
+2024-08-24 22:43:38,817 - INFO - Executing command: grep -q "add_header Access-Control-Allow-Origin" /etc/nginx/nginx.conf || sudo sed -i "/^http {/a \ \ \ \ \tadd_header Access-Control-Allow-Origin *;" /etc/nginx/nginx.conf
+2024-08-24 22:43:40,134 - INFO - Executing command: sudo service nginx restart
+2024-08-24 22:43:41,608 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-24 22:43:42,906 - INFO - SSH connection closed
+2024-08-24 22:43:42,906 - INFO - MySQL connection is closed
+2024-08-24 22:44:38,388 - INFO - Video Id: aNWTV89vaNQ
+2024-08-24 22:44:38,498 - INFO - Successfully connected to the database
+2024-08-24 22:44:38,498 - WARNING - No server found with ID: 2
+2024-08-24 22:44:38,498 - ERROR - Error: No server found with ID: 2
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 80, in <module>
+    raise Exception(f"No server found with ID: {video['serverid']}")
+Exception: No server found with ID: 2
+2024-08-24 22:44:38,506 - INFO - MySQL connection is closed
+2024-08-24 22:45:50,375 - INFO - Video Id: 6CigOkiJpeL
+2024-08-24 22:45:50,557 - INFO - Successfully connected to the database
+2024-08-24 22:45:52,031 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 22:45:53,874 - INFO - Authentication (publickey) successful!
+2024-08-24 22:45:55,515 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-24 22:46:47,331 - INFO - [chan 0] sftp session closed.
+2024-08-24 22:47:00,834 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-24 22:47:24,799 - INFO - [chan 4] sftp session closed.
+2024-08-24 22:47:39,085 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-24 22:48:00,944 - INFO - [chan 7] sftp session closed.
+2024-08-24 22:48:15,898 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-24 22:48:37,623 - INFO - [chan 10] sftp session closed.
+2024-08-24 22:48:38,841 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-24 22:48:41,588 - INFO - [chan 11] sftp session closed.
+2024-08-24 22:48:43,864 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 22:48:45,503 - INFO - Authentication (publickey) successful!
+2024-08-24 22:48:45,503 - INFO - Transferred video 6CigOkiJpeL to storage server at test.com
+2024-08-24 22:48:45,503 - INFO - Storage server SSH connection closed
+2024-08-24 22:48:45,503 - INFO - MySQL connection is closed
+2024-08-24 22:56:30,609 - INFO - Video Id: TcC4SFOvEsn
+2024-08-24 22:56:30,808 - INFO - Successfully connected to the database
+2024-08-24 22:56:32,046 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 22:56:33,783 - INFO - Authentication (publickey) successful!
+2024-08-24 22:56:35,219 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-24 22:57:23,451 - INFO - [chan 0] sftp session closed.
+2024-08-24 22:57:36,247 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-24 22:57:57,553 - INFO - [chan 4] sftp session closed.
+2024-08-24 22:58:11,480 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-24 22:58:32,675 - INFO - [chan 7] sftp session closed.
+2024-08-24 22:58:47,522 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-24 22:59:08,411 - INFO - [chan 10] sftp session closed.
+2024-08-24 22:59:09,630 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-24 22:59:12,303 - INFO - [chan 11] sftp session closed.
+2024-08-24 22:59:14,245 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 22:59:15,993 - INFO - Authentication (publickey) successful!
+2024-08-24 22:59:15,993 - INFO - Transferred video TcC4SFOvEsn to storage server at test.com
+2024-08-24 22:59:15,993 - INFO - Storage server SSH connection closed
+2024-08-24 22:59:15,996 - INFO - MySQL connection is closed
+2024-08-24 23:00:59,749 - INFO - Video Id: SsnFLu9reF9
+2024-08-24 23:00:59,927 - INFO - Successfully connected to the database
+2024-08-24 23:01:01,097 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 23:01:02,689 - INFO - Authentication (publickey) successful!
+2024-08-24 23:01:04,129 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-24 23:01:49,494 - INFO - [chan 0] sftp session closed.
+2024-08-24 23:02:02,178 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-24 23:02:23,177 - INFO - [chan 4] sftp session closed.
+2024-08-24 23:02:37,006 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-24 23:02:57,895 - INFO - [chan 7] sftp session closed.
+2024-08-24 23:03:12,739 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-24 23:03:34,549 - INFO - [chan 10] sftp session closed.
+2024-08-24 23:03:35,774 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-24 23:03:38,552 - INFO - [chan 11] sftp session closed.
+2024-08-24 23:03:40,904 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 23:03:42,647 - INFO - Authentication (publickey) successful!
+2024-08-24 23:03:42,647 - INFO - Transferred video SsnFLu9reF9 to storage server at test.com
+2024-08-24 23:03:42,647 - INFO - Storage server SSH connection closed
+2024-08-24 23:03:42,647 - INFO - MySQL connection is closed
+2024-08-24 23:10:11,511 - INFO - Server Id: 6
+2024-08-24 23:10:11,709 - INFO - Successfully connected to the database
+2024-08-24 23:10:13,001 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 23:10:14,541 - INFO - Authentication (publickey) successful!
+2024-08-24 23:10:14,541 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-24 23:10:18,317 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-24 23:10:18,325 - INFO - Executing command: sudo apt install -y nginx
+2024-08-24 23:10:19,626 - ERROR - Error executing command 'sudo apt install -y nginx': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-24 23:10:19,634 - INFO - Executing command: sudo systemctl enable nginx
+2024-08-24 23:10:21,192 - ERROR - Error executing command 'sudo systemctl enable nginx': Synchronizing state of nginx.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable nginx
+
+2024-08-24 23:10:21,192 - INFO - Executing command: sudo systemctl restart nginx
+2024-08-24 23:10:22,052 - INFO - Executing command: sudo ufw allow "Nginx Full"
+2024-08-24 23:10:23,163 - INFO - Executing command: sudo ufw reload
+2024-08-24 23:10:24,074 - INFO - Executing command: grep -q "add_header Access-Control-Allow-Origin" /etc/nginx/nginx.conf || sudo sed -i "/^http {/a \ \ \ \ \tadd_header Access-Control-Allow-Origin *;" /etc/nginx/nginx.conf
+2024-08-24 23:10:24,987 - INFO - Executing command: sudo service nginx restart
+2024-08-24 23:10:25,930 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-24 23:10:26,874 - INFO - SSH connection closed
+2024-08-24 23:10:26,874 - INFO - MySQL connection is closed
+2024-08-24 23:11:54,410 - INFO - Video Id: 1etIbCPq2ik
+2024-08-24 23:11:54,617 - INFO - Successfully connected to the database
+2024-08-24 23:11:54,617 - WARNING - No server found with ID: 5
+2024-08-24 23:11:54,617 - ERROR - Error: No server found with ID: 5
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 80, in <module>
+    raise Exception(f"No server found with ID: {video['serverid']}")
+Exception: No server found with ID: 5
+2024-08-24 23:11:54,617 - INFO - MySQL connection is closed
+2024-08-24 23:13:14,582 - INFO - Video Id: d6VaCckD8pz
+2024-08-24 23:13:14,721 - INFO - Successfully connected to the database
+2024-08-24 23:13:15,848 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 23:13:17,326 - INFO - Authentication (publickey) successful!
+2024-08-24 23:13:18,753 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-24 23:14:05,900 - INFO - [chan 0] sftp session closed.
+2024-08-24 23:14:18,832 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-24 23:14:36,793 - INFO - [chan 4] sftp session closed.
+2024-08-24 23:14:50,242 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-24 23:15:08,943 - INFO - [chan 7] sftp session closed.
+2024-08-24 23:15:23,507 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-24 23:15:43,558 - INFO - [chan 10] sftp session closed.
+2024-08-24 23:15:44,680 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-24 23:15:47,083 - INFO - [chan 11] sftp session closed.
+2024-08-24 23:15:49,086 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-24 23:15:50,518 - INFO - Authentication (publickey) successful!
+2024-08-24 23:15:51,080 - INFO - Transferred video d6VaCckD8pz to storage server at test.com
+2024-08-24 23:15:51,080 - INFO - Storage server SSH connection closed
+2024-08-24 23:15:51,080 - INFO - MySQL connection is closed
+2024-08-25 00:06:40,894 - INFO - Server Id: 7
+2024-08-25 00:06:41,077 - INFO - Successfully connected to the database
+2024-08-25 00:06:42,301 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-25 00:06:43,948 - INFO - Authentication (publickey) successful!
+2024-08-25 00:06:43,948 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-25 00:06:47,787 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-25 00:06:47,803 - INFO - Executing command: sudo apt install -y nginx
+2024-08-25 00:06:49,298 - ERROR - Error executing command 'sudo apt install -y nginx': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-25 00:06:49,298 - INFO - Executing command: sudo systemctl enable nginx
+2024-08-25 00:06:51,074 - ERROR - Error executing command 'sudo systemctl enable nginx': Synchronizing state of nginx.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable nginx
+
+2024-08-25 00:06:51,074 - INFO - Executing command: sudo systemctl restart nginx
+2024-08-25 00:06:51,959 - INFO - Executing command: sudo ufw allow "Nginx Full"
+2024-08-25 00:06:53,106 - INFO - Executing command: sudo ufw reload
+2024-08-25 00:06:54,107 - INFO - Executing command: grep -q "add_header Access-Control-Allow-Origin" /etc/nginx/nginx.conf || sudo sed -i "/^http {/a \ \ \ \ \tadd_header Access-Control-Allow-Origin *;" /etc/nginx/nginx.conf
+2024-08-25 00:06:55,113 - INFO - Executing command: sudo service nginx restart
+2024-08-25 00:06:56,061 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-25 00:06:56,947 - INFO - SSH connection closed
+2024-08-25 00:06:56,962 - INFO - MySQL connection is closed
+2024-08-25 00:08:47,654 - INFO - Video Id: qxyKd6Z1ftq
+2024-08-25 00:08:47,830 - INFO - Successfully connected to the database
+2024-08-25 00:08:47,830 - WARNING - No server found with ID: 6
+2024-08-25 00:08:47,830 - ERROR - Error: No server found with ID: 6
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 80, in <module>
+    raise Exception(f"No server found with ID: {video['serverid']}")
+Exception: No server found with ID: 6
+2024-08-25 00:08:47,830 - INFO - MySQL connection is closed
+2024-08-25 00:09:37,117 - INFO - Video Id: D9kpXcBlyzT
+2024-08-25 00:09:37,267 - INFO - Successfully connected to the database
+2024-08-25 00:09:38,530 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-25 00:09:40,075 - INFO - Authentication (publickey) successful!
+2024-08-25 00:09:41,509 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-25 00:09:44,586 - INFO - [chan 0] sftp session closed.
+2024-08-25 00:09:49,187 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-25 00:09:54,658 - INFO - [chan 4] sftp session closed.
+2024-08-25 00:09:58,406 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-25 00:10:04,034 - INFO - [chan 7] sftp session closed.
+2024-08-25 00:10:07,832 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-25 00:10:13,461 - INFO - [chan 10] sftp session closed.
+2024-08-25 00:10:14,689 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-25 00:10:17,248 - INFO - [chan 11] sftp session closed.
+2024-08-25 00:10:19,806 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-25 00:10:21,233 - INFO - Authentication (publickey) successful!
+2024-08-25 00:10:21,749 - INFO - Transferred video D9kpXcBlyzT to storage server at test.com
+2024-08-25 00:10:21,749 - INFO - Storage server SSH connection closed
+2024-08-25 00:10:21,749 - INFO - MySQL connection is closed
+2024-08-25 00:13:03,977 - INFO - Server Id: 8
+2024-08-25 00:13:04,159 - INFO - Successfully connected to the database
+2024-08-25 00:13:05,287 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-25 00:13:06,717 - INFO - Authentication (publickey) successful!
+2024-08-25 00:13:06,717 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-25 00:13:15,632 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+
+2024-08-25 00:13:15,648 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-25 00:13:17,004 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-25 00:13:17,004 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-25 00:13:19,166 - INFO - [chan 3] Opened sftp connection (server version 3)
+2024-08-25 00:13:19,494 - INFO - [chan 3] sftp session closed.
+2024-08-25 00:13:19,494 - ERROR - Configuration failed: Failure
+2024-08-25 00:13:19,494 - INFO - SSH connection closed
+2024-08-25 00:13:19,494 - INFO - MySQL connection is closed
+2024-08-25 00:17:49,201 - INFO - Server Id: 9
+2024-08-25 00:17:49,384 - INFO - Successfully connected to the database
+2024-08-25 00:17:50,581 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-25 00:17:52,229 - INFO - Authentication (publickey) successful!
+2024-08-25 00:17:52,229 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-25 00:17:55,500 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-25 00:17:55,500 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-25 00:17:56,870 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-25 00:17:56,886 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-25 00:17:59,185 - INFO - [chan 3] Opened sftp connection (server version 3)
+2024-08-25 00:17:59,491 - INFO - [chan 3] sftp session closed.
+2024-08-25 00:17:59,491 - ERROR - Configuration failed at here: Failure
+2024-08-25 00:17:59,491 - INFO - SSH connection closed
+2024-08-25 00:17:59,491 - INFO - MySQL connection is closed
+2024-08-25 00:24:52,936 - INFO - Server Id: 10
+2024-08-25 00:24:53,127 - INFO - Successfully connected to the database
+2024-08-25 00:24:54,218 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-25 00:24:55,853 - INFO - Authentication (publickey) successful!
+2024-08-25 00:24:55,853 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-25 00:24:59,281 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-25 00:24:59,281 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-25 00:25:00,728 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-25 00:25:00,728 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-25 00:25:02,927 - INFO - [chan 3] Opened sftp connection (server version 3)
+2024-08-25 00:25:04,149 - INFO - [chan 3] sftp session closed.
+2024-08-25 00:25:04,149 - INFO - SSH connection closed
+2024-08-25 00:25:04,149 - INFO - MySQL connection is closed
+2024-08-25 00:26:07,817 - INFO - Server Id: 11
+2024-08-25 00:26:07,961 - INFO - Successfully connected to the database
+2024-08-25 00:26:09,176 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-25 00:26:10,814 - INFO - Authentication (publickey) successful!
+2024-08-25 00:26:10,814 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-25 00:26:14,872 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-25 00:26:14,872 - INFO - Executing command: sudo apt install -y nginx
+2024-08-25 00:26:16,381 - ERROR - Error executing command 'sudo apt install -y nginx': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-25 00:26:16,381 - INFO - Executing command: sudo systemctl enable nginx
+2024-08-25 00:26:18,192 - ERROR - Error executing command 'sudo systemctl enable nginx': Synchronizing state of nginx.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable nginx
+
+2024-08-25 00:26:18,192 - INFO - Executing command: sudo systemctl restart nginx
+2024-08-25 00:26:19,221 - INFO - Executing command: sudo ufw allow "Nginx Full"
+2024-08-25 00:26:20,406 - INFO - Executing command: sudo ufw reload
+2024-08-25 00:26:21,407 - INFO - Executing command: grep -q "add_header Access-Control-Allow-Origin" /etc/nginx/nginx.conf || sudo sed -i "/^http {/a \ \ \ \ \tadd_header Access-Control-Allow-Origin *;" /etc/nginx/nginx.conf
+2024-08-25 00:26:22,320 - INFO - Executing command: sudo service nginx restart
+2024-08-25 00:26:23,363 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-25 00:26:24,268 - INFO - SSH connection closed
+2024-08-25 00:26:24,268 - INFO - MySQL connection is closed
+2024-08-25 00:28:58,821 - INFO - Video Id: 3nWlJcnIlvm
+2024-08-25 00:28:58,997 - INFO - Successfully connected to the database
+2024-08-25 00:28:58,997 - ERROR - Error: No encoder servers available
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 107, in <module>
+    raise Exception("No encoder servers available")
+Exception: No encoder servers available
+2024-08-25 00:28:58,997 - INFO - MySQL connection is closed
+2024-08-25 00:29:57,485 - INFO - Video Id: 38qLoucJOw2
+2024-08-25 00:29:57,735 - INFO - Successfully connected to the database
+2024-08-25 00:29:57,735 - ERROR - Error: No encoder servers available
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\scripts\process_video.py", line 107, in <module>
+    raise Exception("No encoder servers available")
+Exception: No encoder servers available
+2024-08-25 00:29:57,735 - INFO - MySQL connection is closed
+2024-08-25 00:30:44,720 - INFO - Video Id: bZ2w8Rgh2VM
+2024-08-25 00:30:44,828 - INFO - Successfully connected to the database
+2024-08-25 00:30:45,975 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-25 00:30:47,511 - INFO - Authentication (publickey) successful!
+2024-08-25 00:30:48,834 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-25 00:30:51,602 - INFO - [chan 0] sftp session closed.
+2024-08-25 00:30:56,318 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-25 00:31:01,946 - INFO - [chan 4] sftp session closed.
+2024-08-25 00:31:05,739 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-25 00:31:11,013 - INFO - [chan 7] sftp session closed.
+2024-08-25 00:31:14,433 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-25 00:31:19,990 - INFO - [chan 10] sftp session closed.
+2024-08-25 00:31:21,097 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-25 00:31:23,750 - INFO - [chan 11] sftp session closed.
+2024-08-25 00:31:26,002 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-25 00:31:27,300 - INFO - Authentication (publickey) successful!
+2024-08-25 00:31:27,843 - INFO - Transferred video bZ2w8Rgh2VM to storage server at test.com
+2024-08-25 00:31:27,859 - INFO - Storage server SSH connection closed
+2024-08-25 00:31:27,859 - INFO - MySQL connection is closed
+2024-08-25 00:32:54,272 - INFO - Video Id: TbS85Smxa8K
+2024-08-25 00:32:54,405 - INFO - Successfully connected to the database
+2024-08-25 00:32:55,614 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-25 00:32:57,249 - INFO - Authentication (publickey) successful!
+2024-08-25 00:32:58,586 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-25 00:33:01,432 - INFO - [chan 0] sftp session closed.
+2024-08-25 00:33:06,254 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-25 00:33:11,689 - INFO - [chan 4] sftp session closed.
+2024-08-25 00:33:15,272 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-25 00:33:20,930 - INFO - [chan 7] sftp session closed.
+2024-08-25 00:33:24,685 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-25 00:33:30,389 - INFO - [chan 10] sftp session closed.
+2024-08-25 00:33:31,374 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-25 00:33:34,014 - INFO - [chan 11] sftp session closed.
+2024-08-25 00:33:35,554 - INFO - Transferred video TbS85Smxa8K to storage server at test.com
+2024-08-25 00:33:35,554 - INFO - Storage server SSH connection closed
+2024-08-25 00:33:35,554 - INFO - MySQL connection is closed
+2024-08-25 00:35:00,577 - INFO - Video Id: TA7hQRL0KeI
+2024-08-25 00:35:00,792 - INFO - Successfully connected to the database
+2024-08-25 00:35:01,966 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-25 00:35:03,628 - INFO - Authentication (publickey) successful!
+2024-08-25 00:35:04,925 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-25 00:35:07,638 - INFO - [chan 0] sftp session closed.
+2024-08-25 00:35:12,215 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-25 00:35:17,543 - INFO - [chan 4] sftp session closed.
+2024-08-25 00:35:21,134 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-25 00:35:26,459 - INFO - [chan 7] sftp session closed.
+2024-08-25 00:35:30,138 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-25 00:35:35,560 - INFO - [chan 10] sftp session closed.
+2024-08-25 00:35:36,796 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-25 00:35:39,557 - INFO - [chan 11] sftp session closed.
+2024-08-25 00:35:41,299 - INFO - Transferred video TA7hQRL0KeI to storage server at test.com
+2024-08-25 00:35:41,299 - INFO - Storage server SSH connection closed
+2024-08-25 00:35:41,299 - INFO - MySQL connection is closed
+2024-08-25 00:43:48,324 - INFO - Video Id: iD2Ut3T6ktQ
+2024-08-25 00:43:48,591 - INFO - Successfully connected to the database
+2024-08-25 00:43:49,749 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-25 00:43:51,191 - INFO - Authentication (publickey) successful!
+2024-08-25 00:43:52,617 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-25 00:43:55,692 - INFO - [chan 0] sftp session closed.
+2024-08-25 00:44:00,811 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-25 00:44:06,656 - INFO - [chan 4] sftp session closed.
+2024-08-25 00:44:10,744 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-25 00:44:16,381 - INFO - [chan 7] sftp session closed.
+2024-08-25 00:44:20,889 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-25 00:44:26,313 - INFO - [chan 10] sftp session closed.
+2024-08-25 00:44:27,541 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-25 00:44:30,309 - INFO - [chan 11] sftp session closed.
+2024-08-25 00:44:32,151 - INFO - Transferred video iD2Ut3T6ktQ to storage server at test.com
+2024-08-25 00:44:32,151 - INFO - Storage server SSH connection closed
+2024-08-25 00:44:32,151 - INFO - MySQL connection is closed
+2024-08-25 00:53:26,871 - INFO - Video Id: WCNWIHlhgUT
+2024-08-25 00:53:27,126 - INFO - Successfully connected to the database
+2024-08-25 00:53:28,377 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-25 00:53:29,867 - INFO - Authentication (publickey) successful!
+2024-08-25 00:53:31,300 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-25 00:54:15,128 - INFO - [chan 0] sftp session closed.
+2024-08-25 00:54:28,239 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-25 00:54:49,637 - INFO - [chan 4] sftp session closed.
+2024-08-25 00:55:04,021 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-25 00:55:24,024 - INFO - [chan 7] sftp session closed.
+2024-08-25 00:55:39,608 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-25 00:56:01,117 - INFO - [chan 10] sftp session closed.
+2024-08-25 00:56:02,238 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-25 00:56:04,892 - INFO - [chan 11] sftp session closed.
+2024-08-25 00:56:06,738 - INFO - Transferred video WCNWIHlhgUT to storage server at test.com
+2024-08-25 00:56:06,738 - INFO - Storage server SSH connection closed
+2024-08-25 00:56:06,738 - INFO - MySQL connection is closed
+2024-08-26 14:23:18,329 - INFO - Server Id: 12
+2024-08-26 14:23:18,630 - INFO - Successfully connected to the database
+2024-08-26 14:23:19,920 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-26 14:23:21,419 - INFO - Authentication (publickey) successful!
+2024-08-26 14:23:21,419 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-26 14:23:28,206 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 14:23:28,212 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-26 14:23:29,750 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 14:23:29,750 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-26 14:23:31,546 - INFO - [chan 3] Opened sftp connection (server version 3)
+2024-08-26 14:23:32,721 - INFO - [chan 3] sftp session closed.
+2024-08-26 14:23:32,728 - INFO - SSH connection closed
+2024-08-26 14:23:32,728 - INFO - MySQL connection is closed
+2024-08-26 15:06:36,547 - INFO - Server Id: 13
+2024-08-26 15:06:36,723 - INFO - Successfully connected to the database
+2024-08-26 15:06:37,818 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-26 15:06:39,057 - INFO - Authentication (publickey) successful!
+2024-08-26 15:06:39,061 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-26 15:06:42,869 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:06:42,871 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-26 15:06:44,279 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:06:44,283 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-26 15:06:46,008 - INFO - [chan 3] Opened sftp connection (server version 3)
+2024-08-26 15:06:46,940 - INFO - [chan 3] sftp session closed.
+2024-08-26 15:06:46,943 - INFO - SSH connection closed
+2024-08-26 15:06:46,944 - INFO - MySQL connection is closed
+2024-08-26 15:07:43,418 - INFO - Server Id: 14
+2024-08-26 15:07:43,555 - INFO - Successfully connected to the database
+2024-08-26 15:07:44,642 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-26 15:07:45,905 - INFO - Authentication (publickey) successful!
+2024-08-26 15:07:45,909 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-26 15:07:49,727 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:07:49,734 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-26 15:07:51,169 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:07:51,174 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-26 15:07:52,932 - INFO - [chan 3] Opened sftp connection (server version 3)
+2024-08-26 15:07:53,876 - INFO - [chan 3] sftp session closed.
+2024-08-26 15:07:53,881 - INFO - SSH connection closed
+2024-08-26 15:07:53,881 - INFO - MySQL connection is closed
+2024-08-26 15:08:07,819 - INFO - Server Id: 15
+2024-08-26 15:08:07,917 - INFO - Successfully connected to the database
+2024-08-26 15:08:08,976 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-26 15:08:10,211 - INFO - Authentication (publickey) successful!
+2024-08-26 15:08:10,215 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-26 15:08:13,770 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:08:13,775 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-26 15:08:15,238 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:08:15,243 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-26 15:08:16,995 - INFO - [chan 3] Opened sftp connection (server version 3)
+2024-08-26 15:08:17,931 - INFO - [chan 3] sftp session closed.
+2024-08-26 15:08:17,942 - INFO - SSH connection closed
+2024-08-26 15:08:17,943 - INFO - MySQL connection is closed
+2024-08-26 15:08:36,876 - INFO - Server Id: 16
+2024-08-26 15:08:37,009 - INFO - Successfully connected to the database
+2024-08-26 15:08:38,084 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-26 15:08:39,314 - INFO - Authentication (publickey) successful!
+2024-08-26 15:08:39,316 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-26 15:08:42,778 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:08:42,781 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-26 15:08:44,146 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:08:44,152 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-26 15:08:45,869 - INFO - [chan 3] Opened sftp connection (server version 3)
+2024-08-26 15:08:46,797 - INFO - [chan 3] sftp session closed.
+2024-08-26 15:08:46,803 - INFO - SSH connection closed
+2024-08-26 15:08:46,804 - INFO - MySQL connection is closed
+2024-08-26 15:09:03,084 - INFO - Server Id: 17
+2024-08-26 15:09:03,227 - INFO - Successfully connected to the database
+2024-08-26 15:09:04,449 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-26 15:09:05,692 - INFO - Authentication (publickey) successful!
+2024-08-26 15:09:05,698 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-26 15:09:09,488 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:09:09,493 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-26 15:09:10,868 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:09:10,874 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-26 15:09:12,619 - INFO - [chan 3] Opened sftp connection (server version 3)
+2024-08-26 15:09:13,560 - INFO - [chan 3] sftp session closed.
+2024-08-26 15:09:13,565 - INFO - SSH connection closed
+2024-08-26 15:09:13,566 - INFO - MySQL connection is closed
+2024-08-26 15:21:31,291 - INFO - Server Id: 18
+2024-08-26 15:21:31,530 - INFO - Successfully connected to the database
+2024-08-26 15:21:32,597 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-26 15:21:33,830 - INFO - Authentication (publickey) successful!
+2024-08-26 15:21:33,832 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-26 15:21:37,440 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:21:37,444 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-26 15:21:38,827 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:21:38,830 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-26 15:21:40,549 - INFO - [chan 3] Opened sftp connection (server version 3)
+2024-08-26 15:21:41,476 - INFO - [chan 3] sftp session closed.
+2024-08-26 15:21:41,481 - INFO - SSH connection closed
+2024-08-26 15:21:41,481 - INFO - MySQL connection is closed
+2024-08-26 15:22:43,003 - INFO - Server Id: 19
+2024-08-26 15:22:43,132 - INFO - Successfully connected to the database
+2024-08-26 15:22:44,195 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-26 15:22:45,429 - INFO - Authentication (publickey) successful!
+2024-08-26 15:22:45,431 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-26 15:22:49,148 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:22:49,151 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-26 15:22:50,566 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:22:50,570 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-26 15:22:52,300 - INFO - [chan 3] Opened sftp connection (server version 3)
+2024-08-26 15:22:53,229 - INFO - [chan 3] sftp session closed.
+2024-08-26 15:22:53,234 - INFO - SSH connection closed
+2024-08-26 15:22:53,234 - INFO - MySQL connection is closed
+2024-08-26 15:24:07,478 - INFO - Server Id: 20
+2024-08-26 15:24:07,624 - INFO - Successfully connected to the database
+2024-08-26 15:24:08,668 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-26 15:24:09,906 - INFO - Authentication (publickey) successful!
+2024-08-26 15:24:09,911 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-26 15:24:13,373 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:24:13,376 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-26 15:24:14,698 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:24:14,702 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-26 15:24:16,470 - INFO - [chan 3] Opened sftp connection (server version 3)
+2024-08-26 15:24:17,405 - INFO - [chan 3] sftp session closed.
+2024-08-26 15:24:17,408 - INFO - SSH connection closed
+2024-08-26 15:24:17,409 - INFO - MySQL connection is closed
+2024-08-26 15:25:14,051 - INFO - Server Id: 21
+2024-08-26 15:25:14,165 - INFO - Successfully connected to the database
+2024-08-26 15:25:15,422 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-26 15:25:16,678 - INFO - Authentication (publickey) successful!
+2024-08-26 15:25:16,684 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-26 15:25:20,323 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:25:20,329 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-26 15:25:21,720 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:25:21,726 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-26 15:25:23,512 - INFO - [chan 3] Opened sftp connection (server version 3)
+2024-08-26 15:25:24,475 - INFO - [chan 3] sftp session closed.
+2024-08-26 15:25:24,480 - INFO - SSH connection closed
+2024-08-26 15:25:24,481 - INFO - MySQL connection is closed
+2024-08-26 15:26:25,782 - INFO - Server Id: 22
+2024-08-26 15:26:25,961 - INFO - Successfully connected to the database
+2024-08-26 15:26:27,022 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-26 15:26:28,278 - INFO - Authentication (publickey) successful!
+2024-08-26 15:26:28,283 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-26 15:26:32,139 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:26:32,143 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-26 15:26:33,637 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:26:33,641 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-26 15:26:35,371 - INFO - [chan 3] Opened sftp connection (server version 3)
+2024-08-26 15:26:36,295 - INFO - [chan 3] sftp session closed.
+2024-08-26 15:26:36,300 - INFO - SSH connection closed
+2024-08-26 15:26:36,301 - INFO - MySQL connection is closed
+2024-08-26 15:37:18,992 - INFO - Server Id: 23
+2024-08-26 15:37:19,173 - INFO - Successfully connected to the database
+2024-08-26 15:37:20,257 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-26 15:37:21,526 - INFO - Authentication (publickey) successful!
+2024-08-26 15:37:21,529 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-26 15:37:24,959 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:37:24,964 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-26 15:37:26,275 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-26 15:37:26,282 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-26 15:37:28,096 - INFO - [chan 3] Opened sftp connection (server version 3)
+2024-08-26 15:37:29,047 - INFO - [chan 3] sftp session closed.
+2024-08-26 15:37:29,054 - INFO - SSH connection closed
+2024-08-26 15:37:29,055 - INFO - MySQL connection is closed
+2024-08-26 23:02:37,339 - INFO - Video Id: WFmwOKFnCCY
+2024-08-26 23:02:37,498 - INFO - Successfully connected to the database
+2024-08-26 23:02:39,070 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-26 23:02:40,550 - INFO - Authentication (publickey) successful!
+2024-08-26 23:02:42,078 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-26 23:03:30,447 - INFO - [chan 0] sftp session closed.
+2024-08-26 23:03:43,944 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-26 23:04:09,536 - INFO - [chan 4] sftp session closed.
+2024-08-26 23:04:23,987 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-26 23:04:46,258 - INFO - [chan 7] sftp session closed.
+2024-08-26 23:05:02,112 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-26 23:05:23,789 - INFO - [chan 10] sftp session closed.
+2024-08-26 23:05:25,041 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-26 23:05:27,665 - INFO - [chan 11] sftp session closed.
+2024-08-26 23:05:29,525 - INFO - Transferred video WFmwOKFnCCY to storage server at datarichml.com
+2024-08-26 23:05:29,526 - INFO - Storage server SSH connection closed
+2024-08-26 23:05:29,529 - INFO - MySQL connection is closed
+2024-08-27 14:27:56,489 - INFO - Video Id: d8TNROqOnEs
+2024-08-27 14:27:56,699 - INFO - Successfully connected to the database
+2024-08-27 14:27:57,913 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 14:27:59,407 - INFO - Authentication (publickey) successful!
+2024-08-27 14:28:00,715 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-27 14:28:39,013 - INFO - [chan 0] sftp session closed.
+2024-08-27 14:28:51,550 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-27 14:29:09,427 - INFO - [chan 4] sftp session closed.
+2024-08-27 14:29:23,951 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-27 14:29:43,002 - INFO - [chan 7] sftp session closed.
+2024-08-27 14:29:58,245 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-27 14:30:17,915 - INFO - [chan 10] sftp session closed.
+2024-08-27 14:30:19,145 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-27 14:30:21,464 - INFO - [chan 11] sftp session closed.
+2024-08-27 14:30:23,133 - INFO - Transferred video d8TNROqOnEs to storage server at datarichml.com
+2024-08-27 14:30:23,133 - INFO - Storage server SSH connection closed
+2024-08-27 14:30:23,133 - INFO - MySQL connection is closed
+2024-08-27 14:34:45,025 - INFO - Video Id: 602rlYYxDQG
+2024-08-27 14:34:45,259 - INFO - Successfully connected to the database
+2024-08-27 14:34:46,336 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 14:34:47,839 - INFO - Authentication (publickey) successful!
+2024-08-27 14:34:49,274 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-27 14:34:52,037 - INFO - [chan 0] sftp session closed.
+2024-08-27 14:34:56,955 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-27 14:35:02,401 - INFO - [chan 4] sftp session closed.
+2024-08-27 14:35:06,475 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-27 14:35:12,325 - INFO - [chan 7] sftp session closed.
+2024-08-27 14:35:15,195 - INFO - Video Id: qAjnS43NYM5
+2024-08-27 14:35:15,275 - INFO - Successfully connected to the database
+2024-08-27 14:35:16,155 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-27 14:35:16,354 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 14:35:17,795 - INFO - Authentication (publickey) successful!
+2024-08-27 14:35:18,771 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-27 14:35:20,745 - INFO - [chan 10] sftp session closed.
+2024-08-27 14:35:21,670 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-27 14:35:23,724 - INFO - [chan 11] sftp session closed.
+2024-08-27 14:35:25,172 - INFO - Transferred video 602rlYYxDQG to storage server at datarichml.com
+2024-08-27 14:35:25,172 - INFO - Storage server SSH connection closed
+2024-08-27 14:35:25,172 - INFO - MySQL connection is closed
+2024-08-27 14:36:00,861 - INFO - [chan 0] sftp session closed.
+2024-08-27 14:36:10,581 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-27 14:36:31,179 - INFO - [chan 4] sftp session closed.
+2024-08-27 14:36:42,630 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-27 14:37:02,321 - INFO - [chan 7] sftp session closed.
+2024-08-27 14:37:18,271 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-27 14:37:38,239 - INFO - [chan 10] sftp session closed.
+2024-08-27 14:37:39,476 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-27 14:37:42,141 - INFO - [chan 11] sftp session closed.
+2024-08-27 14:37:43,770 - INFO - Transferred video qAjnS43NYM5 to storage server at datarichml.com
+2024-08-27 14:37:43,770 - INFO - Storage server SSH connection closed
+2024-08-27 14:37:43,770 - INFO - MySQL connection is closed
+2024-08-27 14:44:31,785 - INFO - Video Id: OXLDKujWTkI
+2024-08-27 14:44:31,999 - INFO - Successfully connected to the database
+2024-08-27 14:44:33,170 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 14:44:34,707 - INFO - Authentication (publickey) successful!
+2024-08-27 14:44:36,039 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-27 14:45:16,795 - INFO - [chan 0] sftp session closed.
+2024-08-27 14:45:29,930 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-27 14:45:47,139 - INFO - [chan 4] sftp session closed.
+2024-08-27 14:46:01,477 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-27 14:46:20,617 - INFO - [chan 7] sftp session closed.
+2024-08-27 14:46:35,747 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-27 14:46:55,407 - INFO - [chan 10] sftp session closed.
+2024-08-27 14:46:56,637 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-27 14:46:59,399 - INFO - [chan 11] sftp session closed.
+2024-08-27 14:47:01,056 - INFO - Transferred video OXLDKujWTkI to storage server at datarichml.com
+2024-08-27 14:47:01,056 - INFO - Storage server SSH connection closed
+2024-08-27 14:47:01,056 - INFO - MySQL connection is closed
+2024-08-27 18:13:30,727 - INFO - Video Id: mI1OFKDasfr
+2024-08-27 18:13:30,890 - INFO - Successfully connected to the database
+2024-08-27 18:13:31,918 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 18:13:33,163 - INFO - Authentication (publickey) successful!
+2024-08-27 18:13:34,439 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-27 18:14:36,165 - INFO - [chan 0] sftp session closed.
+2024-08-27 18:14:47,726 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-27 18:15:07,442 - INFO - [chan 4] sftp session closed.
+2024-08-27 18:15:21,441 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-27 18:15:41,161 - INFO - [chan 7] sftp session closed.
+2024-08-27 18:16:01,355 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-27 18:16:21,056 - INFO - [chan 10] sftp session closed.
+2024-08-27 18:16:21,978 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-27 18:16:24,056 - INFO - [chan 11] sftp session closed.
+2024-08-27 18:16:25,499 - INFO - Transferred video mI1OFKDasfr to storage server at datarichml.com
+2024-08-27 18:16:25,499 - INFO - Storage server SSH connection closed
+2024-08-27 18:16:25,499 - INFO - MySQL connection is closed
+2024-08-27 18:37:41,858 - INFO - Video Id: jQmoxIuiWM3
+2024-08-27 18:37:42,150 - INFO - Successfully connected to the database
+2024-08-27 18:37:43,255 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 18:37:44,549 - INFO - Authentication (publickey) successful!
+2024-08-27 18:37:45,810 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-27 18:38:22,317 - INFO - [chan 0] sftp session closed.
+2024-08-27 18:38:34,594 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-27 18:38:50,718 - INFO - [chan 4] sftp session closed.
+2024-08-27 18:39:05,231 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-27 18:39:21,332 - INFO - [chan 7] sftp session closed.
+2024-08-27 18:39:35,955 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-27 18:39:52,194 - INFO - [chan 10] sftp session closed.
+2024-08-27 18:39:53,116 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-27 18:39:57,749 - INFO - [chan 11] sftp session closed.
+2024-08-27 18:39:59,172 - INFO - Transferred video jQmoxIuiWM3 to storage server at datarichml.com
+2024-08-27 18:39:59,172 - INFO - Storage server SSH connection closed
+2024-08-27 18:39:59,185 - INFO - MySQL connection is closed
+2024-08-27 18:43:35,303 - INFO - Video Id: sP9g0fIreC2
+2024-08-27 18:43:35,561 - INFO - Successfully connected to the database
+2024-08-27 18:43:36,567 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 18:43:37,776 - INFO - Authentication (publickey) successful!
+2024-08-27 18:43:39,013 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-27 18:50:42,095 - INFO - [chan 0] sftp session closed.
+2024-08-27 18:51:23,921 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-27 18:52:20,284 - INFO - [chan 4] sftp session closed.
+2024-08-27 18:53:14,404 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-27 18:54:10,753 - INFO - [chan 7] sftp session closed.
+2024-08-27 18:55:24,050 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-27 18:56:20,352 - INFO - [chan 10] sftp session closed.
+2024-08-27 18:56:21,265 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-27 18:56:23,308 - INFO - [chan 11] sftp session closed.
+2024-08-27 18:56:24,712 - INFO - Transferred video sP9g0fIreC2 to storage server at datarichml.com
+2024-08-27 18:56:24,712 - INFO - Storage server SSH connection closed
+2024-08-27 18:56:24,712 - INFO - MySQL connection is closed
+2024-08-27 21:14:53,606 - INFO - Server Id: 24
+2024-08-27 21:14:53,773 - INFO - Successfully connected to the database
+2024-08-27 21:14:54,802 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 21:14:56,026 - INFO - Authentication (publickey) successful!
+2024-08-27 21:14:56,026 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-27 21:15:09,073 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+
+2024-08-27 21:15:09,073 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-27 21:15:10,313 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:15:10,313 - INFO - Executing command: sudo apt install python3-pip
+2024-08-27 21:19:04,571 - INFO - Server Id: 25
+2024-08-27 21:19:04,767 - INFO - Successfully connected to the database
+2024-08-27 21:19:05,831 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 21:19:07,046 - INFO - Authentication (publickey) successful!
+2024-08-27 21:19:07,046 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-27 21:19:10,313 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:19:10,313 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-27 21:19:11,541 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:19:11,541 - INFO - Executing command: sudo apt install python3-pip -y
+2024-08-27 21:20:45,301 - INFO - Server Id: 26
+2024-08-27 21:20:45,524 - INFO - Successfully connected to the database
+2024-08-27 21:20:46,529 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 21:20:47,742 - INFO - Authentication (publickey) successful!
+2024-08-27 21:20:47,742 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-27 21:20:51,008 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:20:51,008 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-27 21:20:52,249 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:20:52,249 - INFO - Executing command: sudo apt install python3-pip -y
+2024-08-27 21:20:53,490 - ERROR - Error executing command 'sudo apt install python3-pip -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:20:53,490 - INFO - Executing command: pip install yt-dlp
+2024-08-27 21:20:59,629 - ERROR - Error executing command 'pip install yt-dlp': WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+2024-08-27 21:20:59,629 - INFO - Executing command: pip install gdown
+2024-08-27 21:21:01,842 - ERROR - Error executing command 'pip install gdown': WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+2024-08-27 21:21:01,845 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-27 21:21:03,541 - INFO - [chan 6] Opened sftp connection (server version 3)
+2024-08-27 21:21:04,472 - INFO - [chan 6] sftp session closed.
+2024-08-27 21:21:04,475 - INFO - SSH connection closed
+2024-08-27 21:21:04,476 - INFO - MySQL connection is closed
+2024-08-27 21:34:39,156 - INFO - Server Id: 27
+2024-08-27 21:34:39,381 - INFO - Successfully connected to the database
+2024-08-27 21:34:40,625 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 21:34:42,391 - INFO - Authentication (publickey) successful!
+2024-08-27 21:34:42,391 - ERROR - Configuration failed: 'tuple' object is not callable
+2024-08-27 21:34:42,391 - INFO - SSH connection closed
+2024-08-27 21:34:42,391 - INFO - MySQL connection is closed
+2024-08-27 21:37:38,387 - INFO - Server Id: 28
+2024-08-27 21:37:38,604 - INFO - Successfully connected to the database
+2024-08-27 21:37:39,629 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 21:37:40,909 - INFO - Authentication (publickey) successful!
+2024-08-27 21:37:40,909 - INFO - Executing command: sudo apt update && sudo apt upgrade -y
+2024-08-27 21:37:44,345 - ERROR - Error executing command 'sudo apt update && sudo apt upgrade -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:37:44,345 - INFO - Executing command: sudo apt install ffmpeg -y
+2024-08-27 21:37:45,887 - ERROR - Error executing command 'sudo apt install ffmpeg -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:37:45,887 - INFO - Executing command: sudo apt install python3-pip -y
+2024-08-27 21:37:47,207 - ERROR - Error executing command 'sudo apt install python3-pip -y': 
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+2024-08-27 21:37:47,207 - INFO - Executing command: pip install yt-dlp
+2024-08-27 21:37:48,844 - ERROR - Error executing command 'pip install yt-dlp': WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+2024-08-27 21:37:48,844 - INFO - Executing command: pip install gdown
+2024-08-27 21:37:50,310 - ERROR - Error executing command 'pip install gdown': WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+2024-08-27 21:37:50,325 - INFO - Executing command: sudo mkdir -p /var/www/html/streams/
+2024-08-27 21:37:52,053 - INFO - [chan 6] Opened sftp connection (server version 3)
+2024-08-27 21:37:53,028 - INFO - [chan 6] sftp session closed.
+2024-08-27 21:37:53,028 - INFO - SSH connection closed
+2024-08-27 21:37:53,028 - INFO - MySQL connection is closed
+2024-08-27 22:03:06,520 - INFO - Video Id: LxqtvUUot4c
+2024-08-27 22:03:06,761 - INFO - Successfully connected to the database
+2024-08-27 22:03:07,863 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-27 22:03:09,640 - INFO - Authentication (publickey) successful!
+2024-08-27 22:03:11,265 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-08-27 22:04:02,195 - INFO - [chan 0] sftp session closed.
+2024-08-27 22:04:15,372 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-08-27 22:04:39,981 - INFO - [chan 4] sftp session closed.
+2024-08-27 22:04:54,722 - INFO - [chan 7] Opened sftp connection (server version 3)
+2024-08-27 22:05:16,444 - INFO - [chan 7] sftp session closed.
+2024-08-27 22:05:31,976 - INFO - [chan 10] Opened sftp connection (server version 3)
+2024-08-27 22:05:49,866 - INFO - [chan 10] sftp session closed.
+2024-08-27 22:05:50,952 - INFO - [chan 11] Opened sftp connection (server version 3)
+2024-08-27 22:05:53,646 - INFO - [chan 11] sftp session closed.
+2024-08-27 22:05:55,359 - INFO - Transferred video LxqtvUUot4c to storage server at datarichml.com
+2024-08-27 22:05:55,359 - INFO - Storage server SSH connection closed
+2024-08-27 22:05:55,359 - INFO - MySQL connection is closed
+2024-08-29 11:18:03,333 - INFO - Video Id: H3WHPc18ETN
+2024-08-29 11:18:03,509 - INFO - Successfully connected to the database
+2024-08-29 11:18:04,973 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-08-29 11:18:07,099 - INFO - Authentication (publickey) successful!
+2024-09-11 12:26:54,123 - INFO - Video Id: 2opmgZb15r3
+2024-09-11 12:26:54,327 - INFO - Successfully connected to the database
+2024-09-11 12:26:55,525 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-09-11 12:26:57,071 - INFO - Authentication (publickey) successful!
+2024-09-11 12:26:58,421 - INFO - [chan 0] Opened sftp connection (server version 3)
+2024-09-11 12:27:01,268 - INFO - [chan 0] sftp session closed.
+2024-09-11 12:27:06,137 - INFO - [chan 4] Opened sftp connection (server version 3)
+2024-09-11 12:28:28,207 - INFO - Video Id: 7Cg9sqy87sX
+2024-09-11 12:28:28,485 - INFO - Successfully connected to the database
+2024-09-11 12:28:29,631 - INFO - Connected (version 2.0, client OpenSSH_8.9p1)
+2024-09-18 08:03:35,502 - INFO - Video Id: 6uCjPBglzDT
+2024-09-18 08:03:35,712 - INFO - Successfully connected to the database
+2024-09-18 08:03:35,712 - WARNING - No server found with ID: 1
+2024-09-18 08:03:35,712 - ERROR - Error: No server found with ID: 1
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\laravel\scripts\process_video.py", line 136, in <module>
+    raise Exception(f"No server found with ID: {video['serverid']}")
+Exception: No server found with ID: 1
+2024-09-18 08:03:35,712 - INFO - MySQL connection is closed
+2024-09-18 08:03:57,630 - INFO - Video Id: 34mWx0ElflW
+2024-09-18 08:03:57,726 - INFO - Successfully connected to the database
+2024-09-18 08:03:57,726 - WARNING - No server found with ID: 1
+2024-09-18 08:03:57,726 - ERROR - Error: No server found with ID: 1
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\laravel\scripts\process_video.py", line 136, in <module>
+    raise Exception(f"No server found with ID: {video['serverid']}")
+Exception: No server found with ID: 1
+2024-09-18 08:03:57,726 - INFO - MySQL connection is closed
+2024-09-18 08:06:04,517 - INFO - Video Id: EaqBTvLP4yl
+2024-09-18 08:06:04,660 - INFO - Successfully connected to the database
+2024-09-18 08:06:04,660 - WARNING - No server found with ID: 1
+2024-09-18 08:06:04,660 - ERROR - Error: No server found with ID: 1
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\laravel\scripts\process_video.py", line 136, in <module>
+    raise Exception(f"No server found with ID: {video['serverid']}")
+Exception: No server found with ID: 1
+2024-09-18 08:06:04,660 - INFO - MySQL connection is closed
+2024-09-18 08:13:33,684 - INFO - Video Id: 293s6MFKBVV
+2024-09-18 08:13:34,120 - INFO - Successfully connected to the database
+2024-09-18 08:13:34,120 - WARNING - No server found with ID: 1
+2024-09-18 08:13:34,123 - ERROR - Error: No server found with ID: 1
+Traceback (most recent call last):
+  File "C:\Users\Syed Aalehuzoor\Desktop\Streamify360\laravel\scripts\process_video.py", line 136, in <module>
+    raise Exception(f"No server found with ID: {video['serverid']}")
+Exception: No server found with ID: 1
+2024-09-18 08:13:34,128 - INFO - MySQL connection is closed
